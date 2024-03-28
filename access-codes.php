@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Pinecrest is an alternative payment solutions company that facilitates the easy use of cryptocurrencies for everyday transactions">
+    <meta name="keywords" content="Bitcoin, Perfect Money, Digital assets, Gift cards, payments">
+    <meta name="author" content="Pinecrest">
+    <title>Dashboard | Pinecrest</title>
+
+    <link rel="stylesheet" href="assets/vendors/iconfonts/mdi/font/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.addons.css">
+    <link rel="stylesheet" href="assets/css/vertical-layout-light/style.css">
+    <link rel="shortcut icon" href="assets/images/favicon.png" />
+</head>
+<body class="sidebar-fixed">
+
+    <div class="container-scroller">
+
+        <!-- Top Navbar -->
+        <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+
+            <div class="text-center bg-primary navbar-brand-wrapper d-flex align-items-center justify-content-center">
+                <a class="navbar-brand brand-logo" href="./"><img src="assets/images/logo-light.png" width="200px" alt="logo"/></a>
+                <a class="navbar-brand brand-logo-mini" href="./"><img src="assets/images/footericon.png" width="50px" alt="logo"/></a>
+            </div>
+
+            <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+
+                <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+                    <span class="mdi mdi-menu"></span>
+                </button>
+
+                <ul class="navbar-nav navbar-nav-right">
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
+                            <i class="mdi mdi-bell-outline mx-0"></i>
+                            <span class="count"></span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
+                            <a class="dropdown-item">
+                                <p class="mb-0 font-weight-normal float-left">You have 1 new notifications</p>
+                                <span class="badge badge-pill badge-primary float-right">View all</span>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item preview-item">
+                                <div class="preview-thumbnail">
+                                    <div class="preview-icon bg-primary">
+                                        <i class="mdi mdi-account-box mx-0"></i>
+                                    </div>
+                                </div>
+                                <div class="preview-item-content">
+                                    <h6 class="preview-subject font-weight-medium">Welcome to Pinecrest</h6>
+                                    <p class="font-weight-light small-text mb-0">
+                                        2 days ago
+                                    </p>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item nav-profile dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
+                            <img src="assets/images/avatar.png" alt="profile"/>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
+                            <a class="dropdown-item" href="profile">
+                                <i class="mdi mdi-account text-primary"></i>
+                                Profile
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="">
+                                <i class="mdi mdi-logout text-primary"></i>
+                                Logout
+                            </a>
+                        </div>
+                    </li>
+
+                </ul>
+                <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+                    <span class="mdi mdi-menu"></span>
+                </button>
+            </div>
+        </nav>
+
+        <div class="container-fluid page-body-wrapper">
+        
+            <!-- Left Navbar -->
+            <nav class="sidebar sidebar-offcanvas bg-primary navbg" id="sidebar">
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="admin">
+                            <i class="mdi mdi-view-dashboard-outline menu-icon"></i>
+                            <span class="menu-title">Dashboard</span>
+                        </a>
+                    </li>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="deposit">
+                            <i class="mdi mdi-wallet menu-icon"></i>
+                            <span class="menu-title">Deposit</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#withdrawalModal" data-bs-toggle="modal" data-bs-target="#withdrawalModal">
+                            <i class="mdi mdi-cash-multiple menu-icon"></i>
+                            <span class="menu-title">Withdraw</span>
+                        </a>
+                    </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="users">
+                            <i class="mdi mdi-account-multiple menu-icon"></i>
+                            <span class="menu-title">Users</span>
+                        </a>
+                    </li>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="support">
+                            <i class="mdi mdi-comment-question-outline menu-icon"></i>
+                            <span class="menu-title">Support</span>
+                        </a>
+                    </li> -->
+
+                    <div class="text-center mt-6">
+                        <button class="btn btn-white text-primary">
+                            <i class="mdi mdi-logout menu-icon"></i> 
+                            Log Out
+                        </button>
+                    </div>
+                </ul>
+            </nav>
+
+
+            <div class="main-panel">
+                <div class="content-wrapper">
+                    <div class="row grid-margin">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="col-12 text-center mb-3">
+                                        <h1 class="display-3 text-primary">Users</h1>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="table-responsive">
+                                            <table id="order-listing" class="table">
+                                                <thead>
+                                                <tr>
+                                                    <th>SN</th>
+                                                    <th>Name</th>
+                                                    <th>Email</th>
+                                                    <th>Amount</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>David Grey</td>
+                                                    <td>demo@gmail.com</td>
+                                                    <td>$500</td>
+                                                </tr>
+                                                
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>Stella Johnson</td>
+                                                    <td>testemail@yahoo.com</td>
+                                                    <td>$1,500</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3</td>
+                                                    <td>Marina Michel</td>
+                                                    <td>test@yahoo.com</td>
+                                                    <td>$100</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>4</td>
+                                                    <td>John Doe</td>
+                                                    <td>testemail@gmail.com</td>
+                                                    <td>$350</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>5</td>
+                                                    <td>Peter Dobrick</td>
+                                                    <td>test@gmail.com</td>
+                                                    <td>$2,000</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+                <!-- Footer -->
+                <footer class="footer">
+                    <div class="mx-auto justify-content-center justify-content-sm-between">
+                        <span class="text-center text-center d-block">&copy; <script>document.write(new Date().getFullYear());</script> Pinecrest. All Rights Reserved</span>
+                    </div>
+                </footer>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script src="assets/vendors/js/vendor.bundle.base.js"></script>
+    <script src="assets/vendors/js/vendor.bundle.addons.js"></script>
+    <script src="assets/js/off-canvas.js"></script>
+    <script src="assets/js/hoverable-collapse.js"></script>
+    <script src="assets/js/template.js"></script>
+    <script src="assets/js/settings.js"></script>
+    <script src="assets/js/todolist.js"></script>
+    <script src="assets/js/dashboard.js"></script>
+    <script src="assets/js/data-table.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.4.0/clipboard.js"></script>
+    
+    <script>
+        function copyToClipboard() {
+          var copyText = document.getElementById("refferalLink").value;
+          navigator.clipboard.writeText(copyText).then(() => {
+              // Alert the user that the action took place.
+              // Nobody likes hidden stuff being done under the hood!
+              alert("Copied to clipboard");
+          });
+        }
+    </script>
+    <script>
+        //Greet User
+        var time = new Date().getHours();
+        if (time < 4) {
+            greeting = "You should be in bed 🙄!";
+        }  else if (time < 12) {
+            greeting = "Good morning, wash your hands 🌤";
+        } else if (time < 16) {
+            greeting = "It's lunch 🍛 time, what's on the menu!";
+        } else {
+            greeting = "Good Evening 🌙, how was your day?";
+        }
+        document.getElementById("greet").innerHTML = greeting;
+    </script>
+    
+</body>
+
+</html>
