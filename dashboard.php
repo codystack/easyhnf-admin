@@ -23,49 +23,56 @@ include "./components/topnavbar.php";
                         <div class="col-lg-12 col-sm-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="card-title text-primary">Most Recent Investment</h4>
+                                    <div class="mb-3 d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h4 class="card-title text-primary">Latest Subscribers</h4>
+                                        </div>
+                                        <div class="hstack align-items-center">
+                                            <a href="subscription" class="btn btn-sm btn-dark d-none d-sm-inline-flex"> <span class="pe-2">View all</span><span> <i class="bi bi-arrow-right"></i></span></a>
+                                        </div>
+                                    </div>
+                                    
                                     <div class="table-responsive">
-                                        <table id="recent-investment" class="table">
+                                        <table class="table">
                                             <thead>
+
                                                 <tr>
                                                     <th>SN</th>
                                                     <th>Name</th>
-                                                    <th>Email</th>
                                                     <th>Amount</th>
+                                                    <th class="text-center">Subscription Plan</th>
+                                                    <th class="text-center">Subscription Date</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>David Grey</td>
-                                                    <td>demo@gmail.com</td>
-                                                    <td>$500</td>
-                                                </tr>
                                             
-                                            <tr>
-                                                <td>2</td>
-                                                <td>Stella Johnson</td>
-                                                <td>testemail@yahoo.com</td>
-                                                <td>$1,500</td>
-                                            </tr>
-                                            <tr>
-                                                <td>3</td>
-                                                <td>Marina Michel</td>
-                                                <td>test@yahoo.com</td>
-                                                <td>$100</td>
-                                            </tr>
-                                            <tr>
-                                                <td>4</td>
-                                                <td>John Doe</td>
-                                                <td>testemail@gmail.com</td>
-                                                <td>$350</td>
-                                            </tr>
-                                            <tr>
-                                                <td>5</td>
-                                                <td>Peter Dobrick</td>
-                                                <td>test@gmail.com</td>
-                                                <td>$2,000</td>
-                                            </tr>
+                                            <tbody>
+                                                <?php
+                                                $dash_id = 1;
+                                                $select_query = "SELECT subscription.subscription_date, subscription.subscription_plan, subscription.userID, subscription.amount, users.user_id, users.first_name, users.last_name FROM subscription INNER JOIN users ON subscription.userID = users.user_id ORDER BY subscription_date DESC LIMIT 10";
+                                                    $result = mysqli_query($conn, $select_query);
+                                                    if (mysqli_num_rows($result) > 0) {
+                                                        // output data of each row
+                                                        while($row = mysqli_fetch_assoc($result)) {
+                                                            $subscription_id = $row['subscription_id'];
+                                                            $first_name = $row['first_name'];
+                                                            $last_name = $row['last_name'];
+                                                            $amount = $row['amount'];
+                                                            $subscription_plan = $row['subscription_plan'];
+                                                            $subscription_date = $row['subscription_date'];
+                                                            $date = strtotime($subscription_date);
+                                                ?>
+                                                <tr>
+                                                    <td><?php echo $dash_id; ?></td>
+                                                    <td><?php echo $first_name; ?> <?php echo $last_name; ?></td>
+                                                    <td>₦<?php echo number_format($amount, 0, '.', ','); ?></td>
+                                                    <td class="text-center"><?php echo $subscription_plan; ?></td>
+                                                    <td class="text-center"><?php echo date('j F Y', $date); ?></td>
+                                                </tr>
+                                                <?php
+                                                $dash_id++;
+                                                        }
+                                                    }
+                                                ?>
                                             </tbody>
                                         </table>
                                     </div>
