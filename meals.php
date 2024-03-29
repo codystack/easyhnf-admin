@@ -1,6 +1,7 @@
 <?php
 include "./components/header.php";
 include "./components/topnavbar.php";
+require_once "./auth/delete.php";
 ?>
 
         <div class="container-fluid page-body-wrapper">
@@ -27,6 +28,32 @@ include "./components/topnavbar.php";
                             <div class="card">
                                 <div class="card-body">
                                     <div class="col-12">
+                                        <?php
+                                            if (isset($_SESSION['error_message'])) {
+                                                ?>
+                                                <div class="alert alert-danger" role="alert">
+                                                    <div class="alert-message text-center">
+                                                        <?php
+                                                        echo $_SESSION['error_message'];
+                                                        ?>
+                                                    </div>
+                                                </div>
+                                                <?php
+                                                unset($_SESSION['error_message']);
+                                            }
+                                        ?>
+                                        <?php
+                                            if (isset($_SESSION['success_message'])) {
+                                                ?>
+                                                <div class="alert alert-success" role="alert">
+                                                    <div class="alert-message text-center">
+                                                        <?php echo $_SESSION['success_message']; ?>
+                                                    </div>
+                                                </div>
+                                                <?php
+                                                unset($_SESSION['success_message']);
+                                            }
+                                        ?>
                                         <div class="table-responsive">
                                             <table id="order-listing" class="table">
                                                 <thead>
@@ -72,7 +99,7 @@ include "./components/topnavbar.php";
                                                         <td class="text-center"><span class="badge <? echo $class; ?> text-xs <? echo $text; ?>"><?php echo $status; ?></span></td>
                                                         <td class="text-right">
                                                             <a href="view-meal?id=<?php echo $meal_id; ?>" class='btn btn-dark' style="padding: 0.5rem 1rem;">View</a>
-                                                            <a href="" class='btn btn-danger' style="padding: 0.5rem 1rem;">Delete</a>
+                                                            <button type="submit" data-id="<? echo $meal_id; ?>" onclick="confirmMealDelete(this);" class='btn btn-danger' style="padding: 0.5rem 1rem;">Delete</button>
                                                         </td>
                                                     </tr>
                                                     <?php
@@ -90,6 +117,7 @@ include "./components/topnavbar.php";
                     </div>
                 </div>
             
-
-
-<?php include "./components/footer.php"; ?>
+<?php 
+include "./components/delete-modals.php";
+include "./components/footer.php"; 
+?>

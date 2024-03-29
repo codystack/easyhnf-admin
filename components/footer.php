@@ -19,18 +19,7 @@
     <script src="assets/js/todolist.js"></script>
     <script src="assets/js/dashboard.js"></script>
     <script src="assets/js/data-table.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.4.0/clipboard.js"></script>
-    
-    <script>
-        function copyToClipboard() {
-          var copyText = document.getElementById("refferalLink").value;
-          navigator.clipboard.writeText(copyText).then(() => {
-              // Alert the user that the action took place.
-              // Nobody likes hidden stuff being done under the hood!
-              alert("Copied to clipboard");
-          });
-        }
-    </script>
+    <script src="assets/js/delete.js"></script>
     <script>
         //Greet User
         var time = new Date().getHours();
