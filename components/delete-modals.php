@@ -8,7 +8,7 @@
                     </div>
                     <h4 class="text-center">Are you sure you want to delete this meal?</h4>
                     <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" id="form-delete-meal">
-                        <input type="hidden" name="meal_id">
+                        <input style="display: none;" name="meal_id" value="<?php echo $meal_id; ?>">
                     </form>
                 </div>
                 <div class="modal-footer border-0 justify-content-center mt-n3 mb-4">
