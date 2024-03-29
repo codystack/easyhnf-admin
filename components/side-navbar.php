@@ -8,19 +8,19 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="access-codes">
+                        <a class="nav-link" href="meals">
                             <i class="mdi mdi-pizza menu-icon"></i>
                             <span class="menu-title">Meal</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="access-codes">
-                            <i class="mdi mdi-credit-card menu-icon"></i>
+                        <a class="nav-link" href="subscriptions">
+                            <i class="mdi mdi-credit-card-multiple menu-icon"></i>
                             <span class="menu-title">Subscriptions</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="verify-code">
+                        <a class="nav-link" href="users">
                             <i class="mdi mdi-account-multiple menu-icon"></i>
                             <span class="menu-title">Users</span>
                         </a>

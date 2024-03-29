@@ -37,11 +37,11 @@ include "./components/topnavbar.php";
                                             <thead>
 
                                                 <tr>
-                                                    <th>SN</th>
-                                                    <th>Name</th>
-                                                    <th>Amount</th>
-                                                    <th class="text-center">Subscription Plan</th>
-                                                    <th class="text-center">Subscription Date</th>
+                                                    <th class="font-weight-bold">S/N</th>
+                                                    <th class="font-weight-bold">Name</th>
+                                                    <th class="font-weight-bold">Amount</th>
+                                                    <th class="text-center font-weight-bold">Subscription Plan</th>
+                                                    <th class="text-right font-weight-bold">Subscription Date</th>
                                                 </tr>
                                             </thead>
                                             
@@ -66,7 +66,7 @@ include "./components/topnavbar.php";
                                                     <td><?php echo $first_name; ?> <?php echo $last_name; ?></td>
                                                     <td>₦<?php echo number_format($amount, 0, '.', ','); ?></td>
                                                     <td class="text-center"><?php echo $subscription_plan; ?></td>
-                                                    <td class="text-center"><?php echo date('j F Y', $date); ?></td>
+                                                    <td class="text-right"><?php echo date('j F Y', $date); ?></td>
                                                 </tr>
                                                 <?php
                                                 $dash_id++;
