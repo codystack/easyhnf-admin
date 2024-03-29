@@ -98,8 +98,8 @@ require_once "./auth/queries.php";
                                                     </div>
                                                     <div class="col-md-12">
                                                         <div class="form-group">
-                                                            <label for="instructions">Instructions</label>
-                                                            <textarea rows="5" class="form-control" name="instructions" id="instructions" placeholder="Enter instructions for this meal"></textarea>
+                                                            <label for="instructions">Direction</label>
+                                                            <textarea rows="5" class="form-control" name="instructions" id="instructions" placeholder="Enter directions for this meal"></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12">
@@ -110,8 +110,8 @@ require_once "./auth/queries.php";
                                                     </div>
                                                     <div class="col-md-12">
                                                         <div class="form-group">
-                                                            <label for="nutrition">Nutrition</label>
-                                                            <textarea rows="5" class="form-control" name="nutrition" id="nutrition" placeholder="Enter meal Nutrition"></textarea>
+                                                            <label for="nutrition">Nutrition Info</label>
+                                                            <textarea rows="5" class="form-control" name="nutrition" id="nutrition" placeholder="Enter meal Nutrition info"></textarea>
                                 
                                                         </div>
                                                     </div>
@@ -119,9 +119,6 @@ require_once "./auth/queries.php";
                                                         <div class="form-group">
                                                             <label for="short_description">Short Description</label>
                                                             <textarea rows="5" class="form-control" name="short_description" id="short_description" placeholder="Enter short description"></textarea>
-                                                            <script>
-                                                                CKEDITOR.replace( 'short_description' );
-                                                            </script>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12">
