@@ -43,11 +43,11 @@ if (isset($_POST['login_btn'])) {
             header('location: dashboard');
         }
         if ($status == 0){
-            $_SESSION['error_message'] = "Account not active";
+            $_SESSION['error_message'] = "<strong>Error!</strong> Account not active";
             echo "<meta http-equiv='refresh' content='3; URL=./'>";
         }
     }else {
-        $_SESSION['error_message'] = "Incorrect Login Details";
+        $_SESSION['error_message'] = "<strong>Error!</strong> incorrect Login Details";
         echo "<meta http-equiv='refresh' content='3; URL=./'>";
     }
 }
