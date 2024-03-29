@@ -21,17 +21,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- <div class="col-md-6 col-lg-3 grid-margin stretch-card">
-                            <div class="card bg-gradient-warning text-white text-center card-shadow-warning">
-                                <div class="card-body">
-                                    <h6 class="font-weight-normal">Used Access Codes</h6>
-                                    <?php
-                                        $countUsedAccessCodes = mysqli_query($conn, "SELECT id FROM accessCode WHERE status = 1 ");
-                                    echo "<h2 class='mb-0 font-weight-bold'>".number_format(mysqli_num_rows($countUsedAccessCodes), 0, '.', ',')."</h2>"
-                                    ?>
-                                </div>
-                            </div>
-                        </div> -->
                         <div class="col-md-6 col-lg-4 grid-margin stretch-card">
                             <div class="card bg-gradient-info text-white text-center card-shadow-info">
                                 <div class="card-body">

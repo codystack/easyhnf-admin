@@ -12,7 +12,7 @@ include "./components/topnavbar.php";
                     <div class="row">
                         <div class="col-12 mb-4">
                             <div class="mb-3 mb-lg-0">
-                                <h1 class="mb-2 h2 fw-bold">Hey <?php echo $_SESSION['first_name']; ?>,</h1>
+                                <h1 class="mb-2 h2 font-weight-bold">Hey <?php echo $_SESSION['first_name']; ?>,</h1>
                                 <h5 class="text-dark mt-0 lead" id="greet"></h5>
                             </div>
                         </div>
