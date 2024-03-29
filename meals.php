@@ -30,45 +30,56 @@ include "./components/topnavbar.php";
                                         <div class="table-responsive">
                                             <table id="order-listing" class="table">
                                                 <thead>
-                                                <tr>
-                                                    <th>SN</th>
-                                                    <th>Name</th>
-                                                    <th>Email</th>
-                                                    <th>Amount</th>
-                                                </tr>
+                                                    <tr>
+                                                        <th class="font-weight-bold">S/N</th>
+                                                        <th class="font-weight-bold">Meal Title</th>
+                                                        <th class="font-weight-bold">Meal Code</th>
+                                                        <th class="font-weight-bold text-center">Status</th>
+                                                        <th class="font-weight-bold text-right">Action</th>
+                                                    </tr>
                                                 </thead>
                                                 <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>David Grey</td>
-                                                    <td>demo@gmail.com</td>
-                                                    <td>$500</td>
-                                                </tr>
-                                                
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>Stella Johnson</td>
-                                                    <td>testemail@yahoo.com</td>
-                                                    <td>$1,500</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>3</td>
-                                                    <td>Marina Michel</td>
-                                                    <td>test@yahoo.com</td>
-                                                    <td>$100</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>4</td>
-                                                    <td>John Doe</td>
-                                                    <td>testemail@gmail.com</td>
-                                                    <td>$350</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>5</td>
-                                                    <td>Peter Dobrick</td>
-                                                    <td>test@gmail.com</td>
-                                                    <td>$2,000</td>
-                                                </tr>
+                                                    <?php
+                                                    $m_id = 1;
+                                                    $select_query = "SELECT * FROM meals ORDER BY meal_id ASC";
+                                                        $result = mysqli_query($conn, $select_query);
+                                                        if (mysqli_num_rows($result) > 0) {
+                                                            // output data of each row
+                                                            while($row = mysqli_fetch_assoc($result)) {
+                                                                $meal_id = $row['meal_id'];
+                                                                $meal_code = $row['meal_code'];
+                                                                $title = $row['title'];
+                                                                $status = $row['status'];
+                                                                $created_at = $row['created_at'];
+                                                                $date = strtotime($created_at);
+                                                                switch ($status) {
+                                                                    case "Inactive";
+                                                                        $class  = 'bg-warning';
+                                                                        $text = 'text-white';
+                                                                        break;
+                                                                    case "Active";
+                                                                        $class  = 'bg-success';
+                                                                        $text = 'text-white';
+                                                                        break;
+                                                                    default:
+                                                                        $class  = '';
+                                                                }
+                                                    ?>
+                                                    <tr>
+                                                        <td><?php echo $m_id; ?></td>
+                                                        <td><?php echo $title; ?></td>
+                                                        <td><?php echo $meal_code; ?></td>
+                                                        <td class="text-center"><span class="badge <? echo $class; ?> text-xs <? echo $text; ?>"><?php echo $status; ?></span></td>
+                                                        <td class="text-right">
+                                                            <a href="view-meal?id=<?php echo $meal_id; ?>" class='btn btn-dark' style="padding: 0.5rem 1rem;">View</a>
+                                                            <a href="" class='btn btn-danger' style="padding: 0.5rem 1rem;">Delete</a>
+                                                        </td>
+                                                    </tr>
+                                                    <?php
+                                                    $m_id++;
+                                                            }
+                                                        }
+                                                    ?>
                                                 </tbody>
                                             </table>
                                         </div>

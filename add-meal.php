@@ -119,9 +119,6 @@ require_once "./auth/queries.php";
                                                         <div class="form-group">
                                                             <label for="short_description">Short Description</label>
                                                             <textarea rows="5" class="form-control" name="short_description" id="short_description" placeholder="Enter short description"></textarea>
-                                                            <script>
-                                                                CKEDITOR.replace( 'short_description' );
-                                                            </script>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12">
