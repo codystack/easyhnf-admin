@@ -2,8 +2,8 @@
 <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
 
     <div class="text-center bg-primary navbar-brand-wrapper d-flex align-items-center justify-content-center">
-        <a class="navbar-brand brand-logo" href="./"><img src="assets/images/gelogowhite.png" width="200px" alt="logo"/></a>
-        <a class="navbar-brand brand-logo-mini" href="./"><img src="assets/images/gexfavicon.png" width="50px" alt="logo"/></a>
+        <a class="navbar-brand brand-logo" href="dashboard"><img src="./assets/images/easyhnf-logo-light.png" width="200px" alt="logo"/></a>
+        <a class="navbar-brand brand-logo-mini" href="dashboard"><img src="./assets/images/easy-favicon-white.png" width="50px" alt="logo"/></a>
     </div>
 
     <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">

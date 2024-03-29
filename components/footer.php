@@ -1,7 +1,7 @@
                 <!-- Footer -->
                 <footer class="footer">
                     <div class="mx-auto justify-content-center justify-content-sm-between">
-                        <span class="text-center text-center d-block">&copy; <script>document.write(new Date().getFullYear());</script> Goodnews Estate&trade; All Rights Reserved</span>
+                        <span class="text-center text-center d-block">&copy; Copyrights <script>document.write(new Date().getFullYear());</script> EasyFit&reg;. All Rights Reserved</span>
                     </div>
                 </footer>
 

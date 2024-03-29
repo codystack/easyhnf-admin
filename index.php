@@ -78,7 +78,7 @@
                                     </div>
                                 </div>
                                 <div class="my-3">
-                                    <button class="button btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" type="button" name="login_btn" onclick="this.classList.toggle('button--loading')"><span class="button__text">LOGIN</span></button>
+                                    <button class="button btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" type="submit" name="login_btn" onclick="this.classList.toggle('button--loading')"><span class="button__text">LOGIN</span></button>
                                 </div>
                             </form>
                         </div>

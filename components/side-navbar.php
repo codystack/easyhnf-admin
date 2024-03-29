@@ -2,21 +2,27 @@
             <nav class="sidebar sidebar-offcanvas bg-primary navbg" id="sidebar">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="overview">
+                        <a class="nav-link" href="dashboard">
                             <i class="mdi mdi-view-dashboard-outline menu-icon"></i>
                             <span class="menu-title">Dashboard</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="access-codes">
-                            <i class="mdi mdi-qrcode menu-icon"></i>
-                            <span class="menu-title">Access Codes</span>
+                            <i class="mdi mdi-pizza menu-icon"></i>
+                            <span class="menu-title">Meal</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="access-codes">
+                            <i class="mdi mdi-credit-card menu-icon"></i>
+                            <span class="menu-title">Subscriptions</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="verify-code">
-                            <i class="mdi mdi-qrcode-scan menu-icon"></i>
-                            <span class="menu-title">Verify Code</span>
+                            <i class="mdi mdi-account-multiple menu-icon"></i>
+                            <span class="menu-title">Users</span>
                         </a>
                     </li>
                     <li class="nav-item">

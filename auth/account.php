@@ -40,7 +40,7 @@ if (isset($_POST['login_btn'])) {
         $_SESSION['username'] = $username;
         if ($status == 1){
             $_SESSION['success_message'] = "Login Successfull";
-            header('location: overview');
+            header('location: dashboard');
         }
         if ($status == 0){
             $_SESSION['error_message'] = "Account not active";
