@@ -4,7 +4,7 @@ session_start();
 include "./config/db.php";
 
 
-// Delete Admin script
+// Delete Meal script
 if (isset($_POST['delete_meal_btn'])) {
 
     $meal_id = $_GET['meal_id'];
