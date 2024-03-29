@@ -99,7 +99,7 @@ require_once "./auth/delete.php";
                                                         <td class="text-center"><span class="badge <? echo $class; ?> text-xs <? echo $text; ?>"><?php echo $status; ?></span></td>
                                                         <td class="text-right">
                                                             <a href="view-meal?id=<?php echo $meal_id; ?>" class='btn btn-dark' style="padding: 0.5rem 1rem;">View</a>
-                                                            <button type="submit" data-id="<? echo $meal_id; ?>" onclick="confirmMealDelete(this);" class='btn btn-danger' style="padding: 0.5rem 1rem;">Delete</button>
+                                                            <button type="button" data-id="<? echo $meal_id; ?>" onclick="confirmMealDelete(this);" class='btn btn-danger' style="padding: 0.5rem 1rem;">Delete</button>
                                                         </td>
                                                     </tr>
                                                     <?php

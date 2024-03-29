@@ -141,7 +141,7 @@ include "./components/topnavbar.php";
 
                                     <div class="row mt-4 no-print mb-10">
                                         <div class="text-center mx-auto">
-                                            <button class="btn btn-primary" onclick="window.print()"> Edit Meal </button>             
+                                            <a href="" class="btn btn-primary"> Edit Meal </a>             
                                             <button class="btn btn-danger" onclick="history.back()"> Go back</button>
                                         </div>
                                     </div>

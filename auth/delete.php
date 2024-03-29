@@ -7,7 +7,9 @@ include "./config/db.php";
 // Delete Meal script
 if (isset($_POST['delete_meal_btn'])) {
 
-    $meal_id = $_GET['meal_id'];
+    $meal_id = $_GET['id'];
+
+    echo $meal_id;
 
     $meal_id = $conn->real_escape_string($_POST['meal_id']);
 
