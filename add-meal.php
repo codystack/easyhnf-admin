@@ -130,7 +130,7 @@ require_once "./auth/queries.php";
                                                     
                                                 </div>
 
-                                                <button name="add-meal-btn" type="submit" class="btn btn-primary btn-lg mr-2">Submit</button>
+                                                <button name="add-meal-btn" type="submit" class="button btn-block btn btn-primary btn-lg mr-2" onclick="this.classList.toggle('button--loading')"><span class="button__text">Add new meal</span></button>
                                             </form>
                                         </div>
                                     </div>

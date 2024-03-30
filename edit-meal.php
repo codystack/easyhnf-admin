@@ -1,7 +1,7 @@
 <?php
 include "./components/header.php";
 include "./components/topnavbar.php";
-require_once "./auth/queries.php";
+require_once "./auth/update.php";
 
     $meal_id = $_GET['id'];
     $select_query = "SELECT * FROM meals WHERE meal_id='$meal_id'";
@@ -14,31 +14,14 @@ require_once "./auth/queries.php";
             $meal_image = $row['meal_image'];
             $title = $row['title'];
             $ingredients = $row['ingredients'];
-            $status = $row['status'];
             $instructions = $row['instructions'];
             $notes = $row['notes'];
             $nutrition = $row['nutrition'];
             $short_description = $row['short_description'];
             $long_description = $row['long_description'];
-            $date = strtotime($subscription_date);
-            switch ($status) {
-                case "Inactive";
-                    $class  = 'bg-danger';
-                    $text  = 'text-white';
-                    break;
-                case "Active";
-                    $class  = 'bg-success';
-                    $text  = 'text-black';
-                    break;
-                case "pending";
-                    $class  = 'bg-warning';
-                    $text  = 'text-warning';
-                    break;
-                default:
-                    $class  = '';
-            }
         }
     }
+    
 ?>
         <style>
             #container {
@@ -59,7 +42,7 @@ require_once "./auth/queries.php";
         <div class="container-fluid page-body-wrapper">
         
             <?php include "./components/side-navbar.php"; ?>
-
+            
             <div class="main-panel"> 
                 <div class="content-wrapper">
                     <div class="row">
@@ -68,7 +51,7 @@ require_once "./auth/queries.php";
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div>
-                                            <h4 class="display-4 text-primary font-weight-bold">Add new meal</h4>
+                                            <h4 class="display-4 text-primary font-weight-bold">Edit <?php echo $title; ?></h4>
                                         </div>
                                         <div class="hstack align-items-center">
                                             <button onclick="history.back()" class="btn btn-md btn-dark d-none d-sm-inline-flex"><i class="mdi mdi-arrow-left"></i> <span class="mr-2">Go back</span></button>
@@ -107,9 +90,10 @@ require_once "./auth/queries.php";
                                                     unset($_SESSION['success_message']);
                                                 }
                                             ?>
+                                            
                                             <form class="needs-validation" novalidate action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="POST" enctype="multipart/form-data">
                                                 <div class="row">
-                                                    <div class="col-md-4">
+                                                    <div class="col-md-4" style="display: none;">
                                                         <div class="form-group">
                                                             <label for="title">Meal ID</label>
                                                             <input type="text" class="form-control" name="meal_id" id="meal_id" value="<?php echo $meal_id; ?>">
@@ -118,13 +102,13 @@ require_once "./auth/queries.php";
                                                     <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label for="title">Meal Title</label>
-                                                            <input type="text" class="form-control" name="title" id="title" placeholder="Enter meal title">
+                                                            <input type="text" class="form-control" name="title" id="title" value="<?php echo $title; ?>">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label for="mealCode">Meal Code</label>
-                                                            <input type="text" class="form-control" name="meal_code" id="meal_code" placeholder="Enter meal code">
+                                                            <input type="text" class="form-control" name="meal_code" id="meal_code" value="<?php echo $meal_code; ?>">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-4">
@@ -136,44 +120,44 @@ require_once "./auth/queries.php";
                                                     <div class="col-md-12">
                                                         <div class="form-group">
                                                             <label for="ingredients">Ingredients</label>
-                                                            <textarea rows="5" class="form-control" name="ingredients" id="ingredients" placeholder="Enter ingredients used for this meal"></textarea>
+                                                            <textarea rows="5" class="form-control" name="ingredients" id="ingredients" placeholder="Enter ingredients used for this meal"><?php echo $ingredients; ?></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12">
                                                         <div class="form-group">
                                                             <label for="instructions">Direction</label>
-                                                            <textarea rows="5" class="form-control" name="instructions" id="instructions" placeholder="Enter directions for this meal"></textarea>
+                                                            <textarea rows="5" class="form-control" name="instructions" id="instructions" placeholder="Enter directions for this meal"><?php echo $ingredients; ?></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12">
                                                         <div class="form-group">
                                                             <label for="notes">Notes</label>
-                                                            <textarea rows="10" class="form-control" name="notes" id="notes" placeholder="Enter notes for meal"></textarea>
+                                                            <textarea rows="10" class="form-control" name="notes" id="notes" placeholder="Enter notes for meal"><?php echo $notes; ?></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12">
                                                         <div class="form-group">
                                                             <label for="nutrition">Nutrition Info</label>
-                                                            <textarea rows="5" class="form-control" name="nutrition" id="nutrition" placeholder="Enter meal Nutrition info"></textarea>
+                                                            <textarea rows="5" class="form-control" name="nutrition" id="nutrition" placeholder="Enter meal Nutrition info"><?php echo $nutrition; ?></textarea>
                                 
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12">
                                                         <div class="form-group">
                                                             <label for="short_description">Short Description</label>
-                                                            <textarea rows="5" class="form-control" name="short_description" id="short_description" placeholder="Enter short description"></textarea>
+                                                            <textarea rows="5" class="form-control" name="short_description" id="short_description" placeholder="Enter short description"><?php echo $short_description; ?></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12">
                                                         <div class="form-group">
                                                             <label for="long_description">Long Description</label>
-                                                            <textarea rows="5" class="form-control" name="long_description" id="long_description" placeholder="Enter long description"></textarea>
+                                                            <textarea rows="5" class="form-control" name="long_description" id="long_description" placeholder="Enter long description"><?php echo $long_description; ?></textarea>
                                                         </div>
                                                     </div>
                                                     
                                                 </div>
 
-                                                <button name="add-meal-btn" type="submit" class="btn btn-primary btn-lg mr-2">Submit</button>
+                                                <button name="update_meal_btn" type="submit" class="button btn-block btn btn-primary btn-lg mr-2" onclick="this.classList.toggle('button--loading')"><span class="button__text">Update Meal</span></button>
                                             </form>
                                         </div>
                                     </div>
