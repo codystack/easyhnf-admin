@@ -44,7 +44,7 @@ if (isset($_POST['add-meal-btn'])) {
             copy($_FILES['meal_image']['tmp_name'], $meal_image_path);
 
             $_SESSION['success_message'] = "<strong>Success!</strong> New Meal Added";
-            echo "<meta http-equiv='refresh' content='3; URL=add-meal'>";
+            echo "<meta http-equiv='refresh' content='3; URL=meals'>";
         }else {
             $_SESSION['error_message'] = "Error adding meal".mysqli_error($conn);
         }

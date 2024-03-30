@@ -77,10 +77,6 @@ include "./components/topnavbar.php";
                                                 <span class="badge <? echo $class; ?> text-xs <? echo $text; ?>"><?php echo $status; ?></span>
                                             </div>
                                         </div>
-                                        <!-- <div class="text-center mt-3">
-                                            <p class="mb-0 mt-3"><b>Thank you for your payment!</b></p>
-                                            <p class="mb-0">A successful payment was made for your subscription.<br>See purchase details below.</p>
-                                        </div> -->
                                     </div>
 
                                     <hr />
