@@ -1,22 +1,25 @@
 <?php
 include "./components/header.php";
 include "./components/topnavbar.php";
-require_once "./auth/delete.php"; 
+require_once "./auth/delete.php";
 ?>
 
         <div class="container-fluid page-body-wrapper">
-        
+
             <?php include "./components/side-navbar.php"; ?>
 
-            <div class="main-panel"> 
+            <div class="main-panel">
                 <div class="content-wrapper">
-                    <div class="row">
-                        <div class="col-12">
+                    <div class="row grid-margin">
+                        <div class="col-lg-12">
                             <div class="card mb-3">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div>
-                                            <h4 class="display-4 text-primary font-weight-bold">Users</h4>
+                                            <h4 class="display-4 text-primary font-weight-bold">Meal Plans</h4>
+                                        </div>
+                                        <div class="hstack align-items-center">
+                                            <a href="add-meal-plan" class="btn btn-md btn-dark d-none d-sm-inline-flex"> <span class="mr-2">Schedule new meal plan</span> <i class="mdi mdi-plus-circle"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -54,56 +57,53 @@ require_once "./auth/delete.php";
                                         <div class="table-responsive">
                                             <table id="order-listing" class="table">
                                                 <thead>
-                                                  <tr>
-                                                      <th class="font-weight-bold">S/N</th>
-                                                      <th class="font-weight-bold">Name</th>
-                                                      <th class="font-weight-bold">Email</th>
-                                                      <th class="font-weight-bold">Phone</th>
-                                                      <th class="font-weight-bold">Status</th>
-                                                      <th class="font-weight-bold text-right">Action</th>
-                                                  </tr>
+                                                    <tr>
+                                                        <th class="font-weight-bold">S/N</th>
+                                                        <th class="font-weight-bold">Meal Title</th>
+                                                        <th class="font-weight-bold">Meal Code</th>
+                                                        <th class="font-weight-bold text-center">Status</th>
+                                                        <th class="font-weight-bold text-right">Action</th>
+                                                    </tr>
                                                 </thead>
-
                                                 <tbody>
                                                     <?php
-                                                    $u_id = 1;
-                                                    $select_query = "SELECT * FROM users ORDER BY user_id ASC";
+                                                    $m_id = 1;
+                                                    $select_query = "SELECT * FROM meals ORDER BY meal_id ASC";
                                                         $result = mysqli_query($conn, $select_query);
                                                         if (mysqli_num_rows($result) > 0) {
                                                             // output data of each row
                                                             while($row = mysqli_fetch_assoc($result)) {
-                                                                $user_id = $row['user_id'];
-                                                                $first_name = $row['first_name'];
-                                                                $last_name = $row['last_name'];
-                                                                $email = $row['email'];
+                                                                $meal_id = $row['meal_id'];
+                                                                $meal_code = $row['meal_code'];
+                                                                $title = $row['title'];
                                                                 $status = $row['status'];
-                                                                $phone = $row['phone'];
+                                                                $created_at = $row['created_at'];
+                                                                $date = strtotime($created_at);
                                                                 switch ($status) {
                                                                     case "Inactive";
                                                                         $class  = 'bg-warning';
-                                                                        $text = 'text-black';
+                                                                        $text = 'text-white';
                                                                         break;
                                                                     case "Active";
                                                                         $class  = 'bg-success';
-                                                                        $text = 'text-black';
+                                                                        $text = 'text-white';
                                                                         break;
                                                                     default:
                                                                         $class  = '';
                                                                 }
                                                     ?>
                                                     <tr>
-                                                        <td><?php echo $u_id; ?></td>
-                                                        <td><?php echo $first_name; ?> <?php echo $last_name ?></td>
-                                                        <td><?php echo $email; ?></td>
-                                                        <td><?php echo $phone; ?></td>
+                                                        <td><?php echo $m_id; ?></td>
+                                                        <td><?php echo $title; ?></td>
+                                                        <td><?php echo $meal_code; ?></td>
                                                         <td class="text-center"><span class="badge <? echo $class; ?> text-xs <? echo $text; ?>"><?php echo $status; ?></span></td>
                                                         <td class="text-right">
-                                                            <a href="view-user?id=<?php echo $user_id; ?>" class='btn btn-dark' style="padding: 0.5rem 1rem;">View</a>
-                                                            <button type="button" data-id="<? echo $user_id; ?>" onclick="confirmUserDelete(this);" class='btn btn-danger' style="padding: 0.5rem 1rem;">Delete</button>
+                                                            <a href="view-meal?id=<?php echo $meal_id; ?>" class='btn btn-dark' style="padding: 0.5rem 1rem;">View</a>
+                                                            <button type="button" data-id="<? echo $meal_id; ?>" onclick="confirmMealDelete(this);" class='btn btn-danger' style="padding: 0.5rem 1rem;">Delete</button>
                                                         </td>
                                                     </tr>
-                                                  <?php
-                                                    $u_id++;
+                                                    <?php
+                                                    $m_id++;
                                                             }
                                                         }
                                                     ?>
@@ -116,9 +116,7 @@ require_once "./auth/delete.php";
                         </div>
                     </div>
                 </div>
-
-
-
+            
 <?php 
 include "./components/delete-modals.php";
 include "./components/footer.php"; 

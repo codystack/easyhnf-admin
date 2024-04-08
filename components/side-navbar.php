@@ -20,6 +20,12 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="meal-plans">
+                            <i class="mdi mdi-bookmark-plus menu-icon"></i>
+                            <span class="menu-title">Schedule Meal Plan</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="users">
                             <i class="mdi mdi-account-multiple menu-icon"></i>
                             <span class="menu-title">Users</span>
@@ -29,12 +35,6 @@
                         <a class="nav-link" href="security">
                             <i class="mdi mdi-fingerprint menu-icon"></i>
                             <span class="menu-title">Security</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="support">
-                            <i class="mdi mdi-comment-question-outline menu-icon"></i>
-                            <span class="menu-title">Support</span>
                         </a>
                     </li>
 

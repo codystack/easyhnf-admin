@@ -28,7 +28,7 @@ include "./components/topnavbar.php";
                                             <h4 class="card-title text-primary">Latest Subscribers</h4>
                                         </div>
                                         <div class="hstack align-items-center">
-                                            <a href="subscription" class="btn btn-sm btn-dark d-none d-sm-inline-flex"> <span class="pe-2">View all</span><span> <i class="bi bi-arrow-right"></i></span></a>
+                                            <a href="subscriptions" class="btn btn-sm btn-dark d-none d-sm-inline-flex"> <span class="pe-2">View all</span><span> <i class="bi bi-arrow-right"></i></span></a>
                                         </div>
                                     </div>
                                     
@@ -40,7 +40,8 @@ include "./components/topnavbar.php";
                                                     <th class="font-weight-bold">S/N</th>
                                                     <th class="font-weight-bold">Name</th>
                                                     <th class="font-weight-bold">Amount</th>
-                                                    <th class="text-center font-weight-bold">Subscription Plan</th>
+                                                    <th class="font-weight-bold">Subscription Plan</th>
+                                                    <th class="font-weight-bold">Subscription Date</th>
                                                     <th class="text-right font-weight-bold">Subscription Date</th>
                                                 </tr>
                                             </thead>
@@ -65,8 +66,12 @@ include "./components/topnavbar.php";
                                                     <td><?php echo $dash_id; ?></td>
                                                     <td><?php echo $first_name; ?> <?php echo $last_name; ?></td>
                                                     <td>₦<?php echo number_format($amount, 0, '.', ','); ?></td>
-                                                    <td class="text-center"><?php echo $subscription_plan; ?></td>
-                                                    <td class="text-right"><?php echo date('j F Y', $date); ?></td>
+                                                    <td><?php echo $subscription_plan; ?></td>
+                                                    <td><?php echo date('j F Y', $date); ?></td>
+                                                    <td class="text-right">
+                                                        <a href="view-subscription?id=<?php echo $subscription_id; ?>" class='btn btn-dark' style="padding: 0.5rem 1rem;">View</a>
+                                                        <button type="button" data-id="<? echo $subscription_id; ?>" onclick="confirmSubscriptionDelete(this);" class='btn btn-danger' style="padding: 0.5rem 1rem;">Delete</button>
+                                                    </td>
                                                 </tr>
                                                 <?php
                                                 $dash_id++;

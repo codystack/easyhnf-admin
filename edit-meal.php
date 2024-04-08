@@ -60,7 +60,7 @@ require_once "./auth/update.php";
                                 </div>
                             </div>
 
-                            <div class="card">
+                            <div class="card mb-3">
                                 <div class="card-body">
                                     <div class="col-12">
                                         <div class="">
@@ -92,29 +92,85 @@ require_once "./auth/update.php";
                                             ?>
                                             
                                             <form class="needs-validation" novalidate action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="POST" enctype="multipart/form-data">
-                                                <div class="row">
+                                                <h3 class="mb-4 font-weight-bold">Change Meal Image</h3>
+                                                <hr />
+                                                <div class="row pt-3">
                                                     <div class="col-md-4" style="display: none;">
                                                         <div class="form-group">
                                                             <label for="title">Meal ID</label>
                                                             <input type="text" class="form-control" name="meal_id" id="meal_id" value="<?php echo $meal_id; ?>">
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-4">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="mealCode">Upload Image<span class="small text-danger">(preferably landscape)</span></label>
+                                                            <input type="file" class="form-control" name="meal_image" id="meal_image" required>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label></label>
+                                                            <button name="update_meal_picture_btn" type="submit" class="button btn-block btn btn-primary btn-lg mr-2" onclick="this.classList.toggle('button--loading')"><span class="button__text">Update Meal Image</span></button>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="col-12">
+                                        <div class="">
+                                            <?php
+                                                if (isset($_SESSION['error_message'])) {
+                                                    ?>
+                                                    <div class="alert alert-danger mt-2 mb-3" role="alert">
+                                                        <div class="alert-message text-center">
+                                                            <?php
+                                                            echo $_SESSION['error_message'];
+                                                            ?>
+                                                        </div>
+                                                    </div>
+                                                    <?php
+                                                    unset($_SESSION['error_message']);
+                                                }
+                                            ?>
+                                            <?php
+                                                if (isset($_SESSION['success_message'])) {
+                                                    ?>
+                                                    <div class="alert alert-success mt-2 mb-3" role="alert">
+                                                        <div class="alert-message text-center">
+                                                            <?php echo $_SESSION['success_message']; ?>
+                                                        </div>
+                                                    </div>
+                                                    <?php
+                                                    unset($_SESSION['success_message']);
+                                                }
+                                            ?>
+                                            
+                                            <form class="needs-validation" novalidate action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="POST">
+                                                <div class="row pt-4">
+                                                    <div class="col-md-4" style="display: none;">
+                                                        <div class="form-group">
+                                                            <label for="title">Meal ID</label>
+                                                            <input type="text" class="form-control" name="meal_id" id="meal_id" value="<?php echo $meal_id; ?>">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="title">Meal Title</label>
                                                             <input type="text" class="form-control" name="title" id="title" value="<?php echo $title; ?>">
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-4">
+                                                    <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="mealCode">Meal Code</label>
-                                                            <input type="text" class="form-control" name="meal_code" id="meal_code" value="<?php echo $meal_code; ?>">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <div class="form-group">
-                                                            <label for="mealCode">Upload Image<span class="small text-danger">(preferably landscape)</span></label>
-                                                            <input type="file" class="form-control" name="meal_image" id="meal_image" required>
+                                                            <input type="text" class="form-control" name="meal_code" id="meal_code" value="<?php echo $meal_code; ?>" onkeyup="this.value = this.value.toUpperCase();">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12">

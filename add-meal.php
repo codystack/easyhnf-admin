@@ -81,7 +81,7 @@ require_once "./auth/queries.php";
                                                     <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label for="mealCode">Meal Code</label>
-                                                            <input type="text" class="form-control" name="meal_code" id="meal_code" placeholder="Enter meal code">
+                                                            <input type="text" class="form-control" name="meal_code" id="meal_code" placeholder="Enter meal code" onkeyup="this.value = this.value.toUpperCase();">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-4">

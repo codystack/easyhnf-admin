@@ -36,9 +36,28 @@ if (isset($_POST['delete_user_btn'])) {
 
     if (mysqli_affected_rows($conn) > 0 ) {
         $_SESSION['success_message'] = "User deleted";
-        echo "<meta http-equiv='refresh' content='5; URL=users'>";
     }else{
-        $_SESSION['error_message'] = "Error deleting user".mysqli_error($conn);
+        $_SESSION['error_message'] = "Delete other resources linked to this user first";
+    }
+
+}
+
+
+
+// Delete Subscription script
+if (isset($_POST['delete_subscription_btn'])) {
+
+    $id = $_GET['id'];
+
+    $id = $conn->real_escape_string($_POST['id']);
+
+    $query = "DELETE FROM subscription WHERE subscription_id = '$id'";
+    $result = mysqli_query($conn, $query);
+
+    if (mysqli_affected_rows($conn) > 0 ) {
+        $_SESSION['success_message'] = "Subscription deleted";
+    }else{
+        $_SESSION['error_message'] = "Error deleting subscription".mysqli_error($conn);
     }
 
 }
