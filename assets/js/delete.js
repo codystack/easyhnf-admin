@@ -33,3 +33,12 @@ function confirmCustomPlanDelete(self) {
     document.getElementById("form-delete-custom-plan").id.value = id;
     $("#customPlanDeleteModal").modal("show");
 }
+
+
+//Basic Diet Delete Trigger
+function confirmBasicDietDelete(self) {
+    var id = self.getAttribute("data-id");
+
+    document.getElementById("form-delete-basic-diet").id.value = id;
+    $("#basicDietDeleteModal").modal("show");
+}

@@ -134,3 +134,29 @@ if (isset($_POST['add-meal-plan-btn'])) {
         }
     }
 }
+
+
+
+//New Meal Query
+if (isset($_POST['add-diet-btn'])) {
+
+    $title = $conn->real_escape_string($_POST['title']);
+    $price = $conn->real_escape_string($_POST['price']);
+
+    $check_query = "SELECT * FROM basic_diet WHERE title='$title'";
+    $result = mysqli_query($conn, $check_query);
+    if (mysqli_num_rows($result) > 0) {
+        $_SESSION['error_message'] = "Diet Already Exist!";
+    }else {
+        $query = "INSERT INTO basic_diet (title, price) 
+  			        VALUES('$title', '$price')";
+        mysqli_query($conn, $query);
+        if (mysqli_affected_rows($conn) > 0) {
+
+            $_SESSION['success_message'] = "<strong>Success!</strong> New Diet Added";
+            echo "<meta http-equiv='refresh' content='3; URL=basic-diets'>";
+        }else {
+            $_SESSION['error_message'] = "Error adding diet".mysqli_error($conn);
+        }
+    }
+}

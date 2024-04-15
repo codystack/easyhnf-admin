@@ -18,7 +18,7 @@ include "./components/topnavbar.php";
                                             <h4 class="display-4 text-primary font-weight-bold">Meals</h4>
                                         </div>
                                         <div class="hstack align-items-center">
-                                            <a href="add-meal" class="btn btn-md btn-dark d-none d-sm-inline-flex"> <span class="mr-2">Add new meal</span> <i class="mdi mdi-plus-circle"></i></a>
+                                            <button onclick="history.back()" class="btn btn-md btn-dark d-none d-sm-inline-flex"><i class="mdi mdi-arrow-left"></i> <span class="mr-2">Go back</span></button>
                                         </div>
                                     </div>
                                 </div>

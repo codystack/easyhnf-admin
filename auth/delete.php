@@ -81,3 +81,23 @@ if (isset($_POST['delete_custom_plan_btn'])) {
     }
 
 }
+
+
+
+// Delete Basic Diet script
+if (isset($_POST['delete_basic_diet_btn'])) {
+
+    $id = $_GET['id'];
+
+    $id = $conn->real_escape_string($_POST['id']);
+
+    $query = "DELETE FROM basic_diet WHERE diet_id = '$id'";
+    $result = mysqli_query($conn, $query);
+
+    if (mysqli_affected_rows($conn) > 0 ) {
+        $_SESSION['success_message'] = "Diet deleted";
+    }else{
+        $_SESSION['error_message'] = "Error deleting diet".mysqli_error($conn);
+    }
+
+}

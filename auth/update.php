@@ -160,3 +160,28 @@ include "./config/db.php";
         }
 
     }
+
+
+
+    //Update Basic Diet Query
+    if (isset($_POST['update_basic_diet_btn'])) {
+
+        $diet_id = isset($_GET['diet_id']) ? $_GET['diet_id'] : '';
+
+        $diet_id = $conn->real_escape_string($_POST['diet_id']);
+        $title = $conn->real_escape_string($_POST['title']);
+        $price = $conn->real_escape_string($_POST['price']);
+
+
+        $sql=mysqli_query($conn,"SELECT * FROM basic_diet where diet_id='$diet_id'");
+        $result=mysqli_fetch_array($sql);
+        if($result>0){
+            $conn=mysqli_query($conn,"UPDATE basic_diet SET title='$title', price='$price' WHERE diet_id='$diet_id'");
+
+            $_SESSION['success_message'] = "Diet updated 👍";
+            echo "<meta http-equiv='refresh' content='5; URL=basic-diets'>";
+        } else {
+            $_SESSION['error_message'] = "Error updating diet.".mysqli_error($conn);
+        }
+
+    }
