@@ -26,6 +26,12 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="basic-diets">
+                            <i class="mdi mdi-book-open menu-icon"></i>
+                            <span class="menu-title">Basic Diets</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="users">
                             <i class="mdi mdi-account-multiple menu-icon"></i>
                             <span class="menu-title">Users</span>
@@ -38,13 +44,13 @@
                         </a>
                     </li>
 
-                    <div class="text-center mt-6">
+                    <!-- <div class="text-center mt-6">
                         <button class="btn btn-white text-primary">
                             <a href="logout" style="text-decoration: none" class="text-dark">
                                 <i class="mdi mdi-logout menu-icon"></i> 
                                 Log Out
                             </a>
                         </button>
-                    </div>
+                    </div> -->
                 </ul>
             </nav>

@@ -16,7 +16,7 @@ require_once "./auth/delete.php";
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div>
-                                            <h4 class="display-4 text-primary font-weight-bold">Meal Plans</h4>
+                                            <h4 class="display-4 text-primary font-weight-bold">Custom Meal Plans</h4>
                                         </div>
                                         <div class="hstack align-items-center">
                                             <a href="add-meal-plan" class="btn btn-md btn-dark d-none d-sm-inline-flex"> <span class="mr-2">Schedule new meal plan</span> <i class="mdi mdi-plus-circle"></i></a>
@@ -59,23 +59,24 @@ require_once "./auth/delete.php";
                                                 <thead>
                                                     <tr>
                                                         <th class="font-weight-bold">S/N</th>
-                                                        <th class="font-weight-bold">Meal Title</th>
-                                                        <th class="font-weight-bold">Meal Code</th>
+                                                        <th class="font-weight-bold">Meal Plan Title</th>
+                                                        <th class="font-weight-bold">Full Name</th>
                                                         <th class="font-weight-bold text-center">Status</th>
                                                         <th class="font-weight-bold text-right">Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <?php
-                                                    $m_id = 1;
-                                                    $select_query = "SELECT * FROM meals ORDER BY meal_id ASC";
+                                                    $mp_id = 1;
+                                                    $select_query = "SELECT custom_meal_plan.plan_id, custom_meal_plan.created_at, custom_meal_plan.status, custom_meal_plan.plan_title, custom_meal_plan.userID, users.user_id, users.first_name, users.last_name FROM custom_meal_plan INNER JOIN users ON custom_meal_plan.userID = users.user_id ORDER BY created_at DESC";
                                                         $result = mysqli_query($conn, $select_query);
                                                         if (mysqli_num_rows($result) > 0) {
                                                             // output data of each row
                                                             while($row = mysqli_fetch_assoc($result)) {
-                                                                $meal_id = $row['meal_id'];
-                                                                $meal_code = $row['meal_code'];
-                                                                $title = $row['title'];
+                                                                $plan_id = $row['plan_id'];
+                                                                $first_name = $row['first_name'];
+                                                                $last_name = $row['last_name'];
+                                                                $plan_title = $row['plan_title'];
                                                                 $status = $row['status'];
                                                                 $created_at = $row['created_at'];
                                                                 $date = strtotime($created_at);
@@ -93,17 +94,18 @@ require_once "./auth/delete.php";
                                                                 }
                                                     ?>
                                                     <tr>
-                                                        <td><?php echo $m_id; ?></td>
-                                                        <td><?php echo $title; ?></td>
-                                                        <td><?php echo $meal_code; ?></td>
+                                                        <td><?php echo $mp_id; ?></td>
+                                                        <td><?php echo $plan_title; ?></td>
+                                                        <td><?php echo $first_name; ?> <?php echo $last_name; ?></td>
                                                         <td class="text-center"><span class="badge <? echo $class; ?> text-xs <? echo $text; ?>"><?php echo $status; ?></span></td>
                                                         <td class="text-right">
-                                                            <a href="view-meal?id=<?php echo $meal_id; ?>" class='btn btn-dark' style="padding: 0.5rem 1rem;">View</a>
-                                                            <button type="button" data-id="<? echo $meal_id; ?>" onclick="confirmMealDelete(this);" class='btn btn-danger' style="padding: 0.5rem 1rem;">Delete</button>
+                                                            <a href="view-custom-meal-plan?id=<?php echo $plan_id; ?>" class='btn btn-dark' style="padding: 0.5rem 1rem;">View</a>
+                                                            <a href="edit-custom-meal-plan?id=<?php echo $plan_id; ?>" class='btn btn-warning' style="padding: 0.5rem 1rem;">Edit</a>
+                                                            <button type="button" data-id="<? echo $plan_id; ?>" onclick="confirmCustomPlanDelete(this);" class='btn btn-danger' style="padding: 0.5rem 1rem;">Delete</button>
                                                         </td>
                                                     </tr>
                                                     <?php
-                                                    $m_id++;
+                                                    $mp_id++;
                                                             }
                                                         }
                                                     ?>

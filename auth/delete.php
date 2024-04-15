@@ -61,3 +61,23 @@ if (isset($_POST['delete_subscription_btn'])) {
     }
 
 }
+
+
+
+// Delete Custom Plan script
+if (isset($_POST['delete_custom_plan_btn'])) {
+
+    $id = $_GET['id'];
+
+    $id = $conn->real_escape_string($_POST['id']);
+
+    $query = "DELETE FROM custom_meal_plan WHERE plan_id = '$id'";
+    $result = mysqli_query($conn, $query);
+
+    if (mysqli_affected_rows($conn) > 0 ) {
+        $_SESSION['success_message'] = "Custom Meal Plan deleted";
+    }else{
+        $_SESSION['error_message'] = "Error deleting custom meal plan".mysqli_error($conn);
+    }
+
+}

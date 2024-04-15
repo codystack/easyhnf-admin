@@ -23,3 +23,13 @@ function confirmSubscriptionDelete(self) {
     document.getElementById("form-delete-subscription").id.value = id;
     $("#subscriptionDeleteModal").modal("show");
 }
+
+
+
+//Custom Plan Delete Trigger
+function confirmCustomPlanDelete(self) {
+    var id = self.getAttribute("data-id");
+
+    document.getElementById("form-delete-custom-plan").id.value = id;
+    $("#customPlanDeleteModal").modal("show");
+}
