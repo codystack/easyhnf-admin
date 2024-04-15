@@ -59,19 +59,18 @@ require_once "./auth/queries.php";
                                                 <div class="row mb-4 mt-4">
                                                     <div class="col-md-6 mx-auto">
                                                         <div class="form-group">
-                                                            <label for="title">Select User</label>
-                                                            <select class="form-control" name="userID" id="">
+                                                            <label for="title">Select Diet</label>
+                                                            <select class="form-control" name="diet" id="">
                                                                 <?php
-                                                                $select_query = "SELECT * FROM users WHERE subscription_plan='Customized Plan' OR subscription_plan='Nutrition Coaching Plan'";
+                                                                $select_query = "SELECT * FROM basic_diet ";
                                                                 $result = mysqli_query($conn, $select_query);
                                                                 if (mysqli_num_rows($result) > 0) {
                                                                     // output data of each row
                                                                     while($row = mysqli_fetch_assoc($result)) {
-                                                                        $user_id = $row['user_id'];
-                                                                        $first_name = $row['first_name'];
-                                                                        $last_name = $row['last_name'];
+                                                                        $diet_id = $row['diet_id'];
+                                                                        $title = $row['title'];
                                                                 ?>
-                                                                <option value="<?php echo $user_id;?>"><?php echo $first_name; ?> <?php echo $last_name; ?></option>
+                                                                <option value="<?php echo $title;?>"><?php echo $title; ?></option>
                                                                 <?php
                                                                     }
                                                                 }
@@ -964,7 +963,7 @@ require_once "./auth/queries.php";
                                                     
                                                 </div>
 
-                                                <button name="add-meal-plan-btn" type="submit" class="button btn-block btn btn-primary btn-lg mr-2" onclick="this.classList.toggle('button--loading')"><span class="button__text">Add new custom meal plan</span></button>
+                                                <button name="add-basic-meal-plan-btn" type="submit" class="button btn-block btn btn-primary btn-lg mr-2" onclick="this.classList.toggle('button--loading')"><span class="button__text">Add new basic meal plan</span></button>
                                             </form>
                                         </div>
                                     </div>

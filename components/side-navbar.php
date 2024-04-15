@@ -22,13 +22,19 @@
                     <li class="nav-item">
                         <a class="nav-link" href="meal-plans">
                             <i class="mdi mdi-bookmark-plus menu-icon"></i>
-                            <span class="menu-title">Schedule Meal Plan</span>
+                            <span class="menu-title">Meal Plan</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="basic-diets">
                             <i class="mdi mdi-book-open menu-icon"></i>
                             <span class="menu-title">Basic Diets</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="basic-meal-plans">
+                            <i class="mdi mdi-bookmark-plus-outline menu-icon"></i>
+                            <span class="menu-title">Basic Meal Plan</span>
                         </a>
                     </li>
                     <li class="nav-item">
