@@ -101,3 +101,23 @@ if (isset($_POST['delete_basic_diet_btn'])) {
     }
 
 }
+
+
+
+// Delete Basic Plan script
+if (isset($_POST['delete_basic_plan_btn'])) {
+
+    $id = $_GET['id'];
+
+    $id = $conn->real_escape_string($_POST['id']);
+
+    $query = "DELETE FROM basic_meal_plan WHERE plan_id = '$id'";
+    $result = mysqli_query($conn, $query);
+
+    if (mysqli_affected_rows($conn) > 0 ) {
+        $_SESSION['success_message'] = "Basic Meal Plan deleted";
+    }else{
+        $_SESSION['error_message'] = "Error deleting basic meal plan".mysqli_error($conn);
+    }
+
+}
