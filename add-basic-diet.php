@@ -57,17 +57,17 @@ require_once "./auth/queries.php";
                                             ?>
                                             <form class="needs-validation" novalidate action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="POST">
                                                 <div class="row mb-4 mt-4">
-                                                    <div class="col-md-6 mx-auto">
+                                                    <div class="col-md-12 mx-auto">
                                                         <div class="form-group">
                                                             <label for="title">Title</label>
                                                             <input type="text" class="form-control" name="title" placeholder="Enter diet title">
                                                         </div>
                                                     </div>
 
-                                                    <div class="col-md-6 mx-auto">
+                                                    <div class="col-md-6 mx-auto" style="display: none">
                                                         <div class="form-group">
                                                             <label for="title">Amount</label>
-                                                            <input type="number" class="form-control" name="price" placeholder="1000">
+                                                            <input type="number" class="form-control" name="price" value="20000">
                                                         </div>
                                                     </div>
                                                 </div>

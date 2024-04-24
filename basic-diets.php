@@ -60,7 +60,7 @@ require_once "./auth/delete.php";
                                                     <tr>
                                                         <th class="font-weight-bold">S/N</th>
                                                         <th class="font-weight-bold">Title</th>
-                                                        <th class="font-weight-bold">Amount</th>
+                                                        <!-- <th class="font-weight-bold">Amount</th> -->
                                                         <th class="font-weight-bold">Date Created</th>
                                                         <th class="font-weight-bold text-right">Action</th>
                                                     </tr>
@@ -82,7 +82,7 @@ require_once "./auth/delete.php";
                                                     <tr>
                                                         <td><?php echo $dt_id; ?></td>
                                                         <td><?php echo $title; ?></td>
-                                                        <td>₦<?php echo number_format($price, 0, '.', ','); ?></td>
+                                                        <!-- <td>₦<?php echo number_format($price, 0, '.', ','); ?></td> -->
                                                         <td><?php echo date('j F Y', $date); ?></td>
                                                         <td class="text-right">
                                                             <a href="edit-basic-diet?id=<?php echo $diet_id; ?>" class='btn btn-dark' style="padding: 0.5rem 1rem;">Edit</a>
