@@ -55,7 +55,7 @@ require_once "./auth/queries.php";
                                                     unset($_SESSION['success_message']);
                                                 }
                                             ?>
-                                            <form class="needs-validation" novalidate action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="POST">
+                                            <form class="needs-validation" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="POST">
                                                 <div class="row mb-4 mt-4">
                                                     <div class="col-md-6 mx-auto">
                                                         <div class="form-group">
@@ -82,7 +82,7 @@ require_once "./auth/queries.php";
                                                     <div class="col-md-6 mx-auto">
                                                         <div class="form-group">
                                                             <label for="title">Plan Title</label>
-                                                            <input type="text" class="form-control" name="plan_title" id="title" placeholder="Enter meal title">
+                                                            <input type="text" class="form-control" name="plan_title" id="title" required placeholder="Enter meal title">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -92,7 +92,8 @@ require_once "./auth/queries.php";
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label for="title">Monday Breakfast</label>
-                                                            <select class="form-control" name="monday_breakfast" id="">
+                                                            <select class="form-control" name="monday_breakfast" required id="">
+                                                                <option selected disabled value="">Select Meal</option>
                                                                 <?php
                                                                 $select_query = "SELECT * FROM meals";
                                                                 $result = mysqli_query($conn, $select_query);
@@ -103,7 +104,7 @@ require_once "./auth/queries.php";
                                                                         $meal_code = $row['meal_code'];
                                                                         $title = $row['title'];
                                                                 ?>
-                                                                <option value="<?php echo $title; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
                                                                 <?php
                                                                     }
                                                                 }
@@ -122,7 +123,8 @@ require_once "./auth/queries.php";
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label for="mealCode">Monday Lunch</label>
-                                                            <select class="form-control" name="monday_lunch" id="">
+                                                            <select class="form-control" name="monday_lunch" required id="">
+                                                                <option selected disabled value="">Select Meal</option>
                                                                 <?php
                                                                 $select_query = "SELECT * FROM meals";
                                                                 $result = mysqli_query($conn, $select_query);
@@ -133,7 +135,7 @@ require_once "./auth/queries.php";
                                                                         $meal_code = $row['meal_code'];
                                                                         $title = $row['title'];
                                                                 ?>
-                                                                <option value="<?php echo $title; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
                                                                 <?php
                                                                     }
                                                                 }
@@ -152,7 +154,8 @@ require_once "./auth/queries.php";
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label for="mealCode">Monday Snack</label>
-                                                            <select class="form-control" name="monday_snack" id="">
+                                                            <select class="form-control" name="monday_snack" required id="">
+                                                                <option selected disabled value="">Select Meal</option>
                                                                 <?php
                                                                 $select_query = "SELECT * FROM meals";
                                                                 $result = mysqli_query($conn, $select_query);
@@ -163,7 +166,7 @@ require_once "./auth/queries.php";
                                                                         $meal_code = $row['meal_code'];
                                                                         $title = $row['title'];
                                                                 ?>
-                                                                <option value="<?php echo $title; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
                                                                 <?php
                                                                     }
                                                                 }
@@ -182,7 +185,8 @@ require_once "./auth/queries.php";
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label for="mealCode">Monday Dinner</label>
-                                                            <select class="form-control" name="monday_dinner" id="">
+                                                            <select class="form-control" name="monday_dinner" required id="">
+                                                                <option selected disabled value="">Select Meal</option>
                                                                 <?php
                                                                 $select_query = "SELECT * FROM meals";
                                                                 $result = mysqli_query($conn, $select_query);
@@ -193,7 +197,7 @@ require_once "./auth/queries.php";
                                                                         $meal_code = $row['meal_code'];
                                                                         $title = $row['title'];
                                                                 ?>
-                                                                <option value="<?php echo $title; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
                                                                 <?php
                                                                     }
                                                                 }
@@ -217,7 +221,8 @@ require_once "./auth/queries.php";
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label for="title">Tuesday Breakfast</label>
-                                                            <select class="form-control" name="tuesday_breakfast" id="">
+                                                            <select class="form-control" name="tuesday_breakfast" required id="">
+                                                                <option selected disabled value="">Select Meal</option>
                                                                 <?php
                                                                 $select_query = "SELECT * FROM meals";
                                                                 $result = mysqli_query($conn, $select_query);
@@ -228,7 +233,7 @@ require_once "./auth/queries.php";
                                                                         $meal_code = $row['meal_code'];
                                                                         $title = $row['title'];
                                                                 ?>
-                                                                <option value="<?php echo $title; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
                                                                 <?php
                                                                     }
                                                                 }
@@ -247,7 +252,8 @@ require_once "./auth/queries.php";
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label for="mealCode">Tuesday Lunch</label>
-                                                            <select class="form-control" name="tuesday_lunch" id="">
+                                                            <select class="form-control" name="tuesday_lunch"required id="">
+                                                                <option selected disabled value="">Select Meal</option>
                                                                 <?php
                                                                 $select_query = "SELECT * FROM meals";
                                                                 $result = mysqli_query($conn, $select_query);
@@ -258,7 +264,7 @@ require_once "./auth/queries.php";
                                                                         $meal_code = $row['meal_code'];
                                                                         $title = $row['title'];
                                                                 ?>
-                                                                <option value="<?php echo $title; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
                                                                 <?php
                                                                     }
                                                                 }
@@ -277,7 +283,8 @@ require_once "./auth/queries.php";
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label for="mealCode">Tuesday Snack</label>
-                                                            <select class="form-control" name="tuesday_snack" id="">
+                                                            <select class="form-control" name="tuesday_snack" required id="">
+                                                                <option selected disabled value="">Select Meal</option>
                                                                 <?php
                                                                 $select_query = "SELECT * FROM meals";
                                                                 $result = mysqli_query($conn, $select_query);
@@ -288,7 +295,7 @@ require_once "./auth/queries.php";
                                                                         $meal_code = $row['meal_code'];
                                                                         $title = $row['title'];
                                                                 ?>
-                                                                <option value="<?php echo $title; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
                                                                 <?php
                                                                     }
                                                                 }
@@ -307,7 +314,8 @@ require_once "./auth/queries.php";
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label for="mealCode">Tuesday Dinner</label>
-                                                            <select class="form-control" name="tuesday_dinner" id="">
+                                                            <select class="form-control" name="tuesday_dinner" required id="">
+                                                                <option selected disabled value="">Select Meal</option>
                                                                 <?php
                                                                 $select_query = "SELECT * FROM meals";
                                                                 $result = mysqli_query($conn, $select_query);
@@ -318,7 +326,7 @@ require_once "./auth/queries.php";
                                                                         $meal_code = $row['meal_code'];
                                                                         $title = $row['title'];
                                                                 ?>
-                                                                <option value="<?php echo $title; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
                                                                 <?php
                                                                     }
                                                                 }
@@ -342,7 +350,8 @@ require_once "./auth/queries.php";
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label for="title">Wednesday Breakfast</label>
-                                                            <select class="form-control" name="wednesday_breakfast" id="">
+                                                            <select class="form-control" name="wednesday_breakfast" required id="">
+                                                                <option selected disabled value="">Select Meal</option>
                                                                 <?php
                                                                 $select_query = "SELECT * FROM meals";
                                                                 $result = mysqli_query($conn, $select_query);
@@ -353,7 +362,7 @@ require_once "./auth/queries.php";
                                                                         $meal_code = $row['meal_code'];
                                                                         $title = $row['title'];
                                                                 ?>
-                                                                <option value="<?php echo $title; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
                                                                 <?php
                                                                     }
                                                                 }
@@ -372,7 +381,8 @@ require_once "./auth/queries.php";
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label for="mealCode">Wednesday Lunch</label>
-                                                            <select class="form-control" name="wednesday_lunch" id="">
+                                                            <select class="form-control" name="wednesday_lunch" required id="">
+                                                                <option selected disabled value="">Select Meal</option>
                                                                 <?php
                                                                 $select_query = "SELECT * FROM meals";
                                                                 $result = mysqli_query($conn, $select_query);
@@ -383,7 +393,7 @@ require_once "./auth/queries.php";
                                                                         $meal_code = $row['meal_code'];
                                                                         $title = $row['title'];
                                                                 ?>
-                                                                <option value="<?php echo $title; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
                                                                 <?php
                                                                     }
                                                                 }
@@ -402,7 +412,8 @@ require_once "./auth/queries.php";
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label for="mealCode">Wednesday Snack</label>
-                                                            <select class="form-control" name="wednesday_snack" id="">
+                                                            <select class="form-control" name="wednesday_snack" required id="">
+                                                                <option selected disabled value="">Select Meal</option>
                                                                 <?php
                                                                 $select_query = "SELECT * FROM meals";
                                                                 $result = mysqli_query($conn, $select_query);
@@ -413,7 +424,7 @@ require_once "./auth/queries.php";
                                                                         $meal_code = $row['meal_code'];
                                                                         $title = $row['title'];
                                                                 ?>
-                                                                <option value="<?php echo $title; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
                                                                 <?php
                                                                     }
                                                                 }
@@ -432,7 +443,8 @@ require_once "./auth/queries.php";
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label for="mealCode">Wednesday Dinner</label>
-                                                            <select class="form-control" name="wednesday_dinner" id="">
+                                                            <select class="form-control" name="wednesday_dinner" required id="">
+                                                                <option selected disabled value="">Select Meal</option>
                                                                 <?php
                                                                 $select_query = "SELECT * FROM meals";
                                                                 $result = mysqli_query($conn, $select_query);
@@ -443,7 +455,7 @@ require_once "./auth/queries.php";
                                                                         $meal_code = $row['meal_code'];
                                                                         $title = $row['title'];
                                                                 ?>
-                                                                <option value="<?php echo $title; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
                                                                 <?php
                                                                     }
                                                                 }
@@ -467,7 +479,8 @@ require_once "./auth/queries.php";
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label for="title">Thursday Breakfast</label>
-                                                            <select class="form-control" name="thursday_breakfast" id="">
+                                                            <select class="form-control" name="thursday_breakfast" required id="">
+                                                                <option selected disabled value="">Select Meal</option>
                                                                 <?php
                                                                 $select_query = "SELECT * FROM meals";
                                                                 $result = mysqli_query($conn, $select_query);
@@ -478,7 +491,7 @@ require_once "./auth/queries.php";
                                                                         $meal_code = $row['meal_code'];
                                                                         $title = $row['title'];
                                                                 ?>
-                                                                <option value="<?php echo $title; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
                                                                 <?php
                                                                     }
                                                                 }
@@ -497,7 +510,8 @@ require_once "./auth/queries.php";
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label for="mealCode">Thursday Lunch</label>
-                                                            <select class="form-control" name="thursday_lunch" id="">
+                                                            <select class="form-control" name="thursday_lunch" required id="">
+                                                                <option selected disabled value="">Select Meal</option>
                                                                 <?php
                                                                 $select_query = "SELECT * FROM meals";
                                                                 $result = mysqli_query($conn, $select_query);
@@ -508,7 +522,7 @@ require_once "./auth/queries.php";
                                                                         $meal_code = $row['meal_code'];
                                                                         $title = $row['title'];
                                                                 ?>
-                                                                <option value="<?php echo $title; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
                                                                 <?php
                                                                     }
                                                                 }
@@ -527,7 +541,8 @@ require_once "./auth/queries.php";
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label for="mealCode">Thursday Snack</label>
-                                                            <select class="form-control" name="thursday_snack" id="">
+                                                            <select class="form-control" name="thursday_snack" required id="">
+                                                                <option selected disabled value="">Select Meal</option>
                                                                 <?php
                                                                 $select_query = "SELECT * FROM meals";
                                                                 $result = mysqli_query($conn, $select_query);
@@ -538,7 +553,7 @@ require_once "./auth/queries.php";
                                                                         $meal_code = $row['meal_code'];
                                                                         $title = $row['title'];
                                                                 ?>
-                                                                <option value="<?php echo $title; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
                                                                 <?php
                                                                     }
                                                                 }
@@ -557,7 +572,8 @@ require_once "./auth/queries.php";
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label for="mealCode">Thursday Dinner</label>
-                                                            <select class="form-control" name="thursday_dinner" id="">
+                                                            <select class="form-control" name="thursday_dinner" required id="">
+                                                                <option selected disabled value="">Select Meal</option>
                                                                 <?php
                                                                 $select_query = "SELECT * FROM meals";
                                                                 $result = mysqli_query($conn, $select_query);
@@ -568,7 +584,7 @@ require_once "./auth/queries.php";
                                                                         $meal_code = $row['meal_code'];
                                                                         $title = $row['title'];
                                                                 ?>
-                                                                <option value="<?php echo $title; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
                                                                 <?php
                                                                     }
                                                                 }
@@ -592,7 +608,8 @@ require_once "./auth/queries.php";
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label for="title">Friday Breakfast</label>
-                                                            <select class="form-control" name="friday_breakfast" id="">
+                                                            <select class="form-control" name="friday_breakfast" required id="">
+                                                                <option selected disabled value="">Select Meal</option>
                                                                 <?php
                                                                 $select_query = "SELECT * FROM meals";
                                                                 $result = mysqli_query($conn, $select_query);
@@ -603,7 +620,7 @@ require_once "./auth/queries.php";
                                                                         $meal_code = $row['meal_code'];
                                                                         $title = $row['title'];
                                                                 ?>
-                                                                <option value="<?php echo $title; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
                                                                 <?php
                                                                     }
                                                                 }
@@ -623,7 +640,8 @@ require_once "./auth/queries.php";
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label for="mealCode">Friday Lunch</label>
-                                                            <select class="form-control" name="friday_lunch" id="">
+                                                            <select class="form-control" name="friday_lunch" required id="">
+                                                                <option selected disabled value="">Select Meal</option>
                                                                 <?php
                                                                 $select_query = "SELECT * FROM meals";
                                                                 $result = mysqli_query($conn, $select_query);
@@ -634,7 +652,7 @@ require_once "./auth/queries.php";
                                                                         $meal_code = $row['meal_code'];
                                                                         $title = $row['title'];
                                                                 ?>
-                                                                <option value="<?php echo $title; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
                                                                 <?php
                                                                     }
                                                                 }
@@ -653,7 +671,8 @@ require_once "./auth/queries.php";
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label for="mealCode">Friday Snack</label>
-                                                            <select class="form-control" name="friday_snack" id="">
+                                                            <select class="form-control" name="friday_snack" required id="">
+                                                                <option selected disabled value="">Select Meal</option>
                                                                 <?php
                                                                 $select_query = "SELECT * FROM meals";
                                                                 $result = mysqli_query($conn, $select_query);
@@ -664,7 +683,7 @@ require_once "./auth/queries.php";
                                                                         $meal_code = $row['meal_code'];
                                                                         $title = $row['title'];
                                                                 ?>
-                                                                <option value="<?php echo $title; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
                                                                 <?php
                                                                     }
                                                                 }
@@ -683,7 +702,8 @@ require_once "./auth/queries.php";
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label for="mealCode">Friday Dinner</label>
-                                                            <select class="form-control" name="friday_dinner" id="">
+                                                            <select class="form-control" name="friday_dinner" required id="">
+                                                                <option selected disabled value="">Select Meal</option>
                                                                 <?php
                                                                 $select_query = "SELECT * FROM meals";
                                                                 $result = mysqli_query($conn, $select_query);
@@ -694,7 +714,7 @@ require_once "./auth/queries.php";
                                                                         $meal_code = $row['meal_code'];
                                                                         $title = $row['title'];
                                                                 ?>
-                                                                <option value="<?php echo $title; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
                                                                 <?php
                                                                     }
                                                                 }
@@ -718,7 +738,8 @@ require_once "./auth/queries.php";
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label for="title">Saturday Breakfast</label>
-                                                            <select class="form-control" name="saturday_breakfast" id="">
+                                                            <select class="form-control" name="saturday_breakfast" required id="">
+                                                                <option selected disabled value="">Select Meal</option>
                                                                 <?php
                                                                 $select_query = "SELECT * FROM meals";
                                                                 $result = mysqli_query($conn, $select_query);
@@ -729,7 +750,7 @@ require_once "./auth/queries.php";
                                                                         $meal_code = $row['meal_code'];
                                                                         $title = $row['title'];
                                                                 ?>
-                                                                <option value="<?php echo $title; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
                                                                 <?php
                                                                     }
                                                                 }
@@ -748,7 +769,8 @@ require_once "./auth/queries.php";
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label for="mealCode">Saturday Lunch</label>
-                                                            <select class="form-control" name="saturday_lunch" id="">
+                                                            <select class="form-control" name="saturday_lunch" required id="">
+                                                                <option selected disabled value="">Select Meal</option>
                                                                 <?php
                                                                 $select_query = "SELECT * FROM meals";
                                                                 $result = mysqli_query($conn, $select_query);
@@ -759,7 +781,7 @@ require_once "./auth/queries.php";
                                                                         $meal_code = $row['meal_code'];
                                                                         $title = $row['title'];
                                                                 ?>
-                                                                <option value="<?php echo $title; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
                                                                 <?php
                                                                     }
                                                                 }
@@ -778,7 +800,8 @@ require_once "./auth/queries.php";
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label for="mealCode">Saturday Snack</label>
-                                                            <select class="form-control" name="saturday_snack" id="">
+                                                            <select class="form-control" name="saturday_snack" required id="">
+                                                                <option selected disabled value="">Select Meal</option>
                                                                 <?php
                                                                 $select_query = "SELECT * FROM meals";
                                                                 $result = mysqli_query($conn, $select_query);
@@ -789,7 +812,7 @@ require_once "./auth/queries.php";
                                                                         $meal_code = $row['meal_code'];
                                                                         $title = $row['title'];
                                                                 ?>
-                                                                <option value="<?php echo $title; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
                                                                 <?php
                                                                     }
                                                                 }
@@ -808,7 +831,8 @@ require_once "./auth/queries.php";
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label for="mealCode">Saturday Dinner</label>
-                                                            <select class="form-control" name="saturday_dinner" id="">
+                                                            <select class="form-control" name="saturday_dinner" required id="">
+                                                                <option selected disabled value="">Select Meal</option>
                                                                 <?php
                                                                 $select_query = "SELECT * FROM meals";
                                                                 $result = mysqli_query($conn, $select_query);
@@ -819,7 +843,7 @@ require_once "./auth/queries.php";
                                                                         $meal_code = $row['meal_code'];
                                                                         $title = $row['title'];
                                                                 ?>
-                                                                <option value="<?php echo $title; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
                                                                 <?php
                                                                     }
                                                                 }
@@ -844,7 +868,8 @@ require_once "./auth/queries.php";
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label for="title">Sunday Breakfast</label>
-                                                            <select class="form-control" name="sunday_breakfast" id="">
+                                                            <select class="form-control" name="sunday_breakfast" required id="">
+                                                                <option selected disabled value="">Select Meal</option>
                                                                 <?php
                                                                 $select_query = "SELECT * FROM meals";
                                                                 $result = mysqli_query($conn, $select_query);
@@ -855,7 +880,7 @@ require_once "./auth/queries.php";
                                                                         $meal_code = $row['meal_code'];
                                                                         $title = $row['title'];
                                                                 ?>
-                                                                <option value="<?php echo $title; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
                                                                 <?php
                                                                     }
                                                                 }
@@ -874,7 +899,8 @@ require_once "./auth/queries.php";
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label for="mealCode">Sunday Lunch</label>
-                                                            <select class="form-control" name="sunday_lunch" id="">
+                                                            <select class="form-control" name="sunday_lunch" required id="">
+                                                                <option selected disabled value="">Select Meal</option>
                                                                 <?php
                                                                 $select_query = "SELECT * FROM meals";
                                                                 $result = mysqli_query($conn, $select_query);
@@ -885,7 +911,7 @@ require_once "./auth/queries.php";
                                                                         $meal_code = $row['meal_code'];
                                                                         $title = $row['title'];
                                                                 ?>
-                                                                <option value="<?php echo $title; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
                                                                 <?php
                                                                     }
                                                                 }
@@ -904,7 +930,8 @@ require_once "./auth/queries.php";
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label for="mealCode">Sunday Snack</label>
-                                                            <select class="form-control" name="sunday_snack" id="">
+                                                            <select class="form-control" name="sunday_snack" required id="">
+                                                                <option selected disabled value="">Select Meal</option>
                                                                 <?php
                                                                 $select_query = "SELECT * FROM meals";
                                                                 $result = mysqli_query($conn, $select_query);
@@ -915,7 +942,7 @@ require_once "./auth/queries.php";
                                                                         $meal_code = $row['meal_code'];
                                                                         $title = $row['title'];
                                                                 ?>
-                                                                <option value="<?php echo $title; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
                                                                 <?php
                                                                     }
                                                                 }
@@ -934,7 +961,8 @@ require_once "./auth/queries.php";
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label for="mealCode">Sunday Dinner</label>
-                                                            <select class="form-control" name="sunday_dinner" id="">
+                                                            <select class="form-control" name="sunday_dinner" required id="">
+                                                                <option selected disabled value="">Select Meal</option>
                                                                 <?php
                                                                 $select_query = "SELECT * FROM meals";
                                                                 $result = mysqli_query($conn, $select_query);
@@ -945,7 +973,7 @@ require_once "./auth/queries.php";
                                                                         $meal_code = $row['meal_code'];
                                                                         $title = $row['title'];
                                                                 ?>
-                                                                <option value="<?php echo $title; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
                                                                 <?php
                                                                     }
                                                                 }

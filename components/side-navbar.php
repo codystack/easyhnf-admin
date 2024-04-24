@@ -22,7 +22,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="meal-plan-custom">
                             <i class="mdi mdi-bookmark-plus menu-icon"></i>
-                            <span class="menu-title">Meal Plan</span>
+                            <span class="menu-title">Custom Meal Plan</span>
                         </a>
                     </li>
                     <li class="nav-item">
