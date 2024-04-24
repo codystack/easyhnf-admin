@@ -128,7 +128,7 @@ if (isset($_POST['add-meal-plan-btn'])) {
         if (mysqli_affected_rows($conn) > 0) {
 
             $_SESSION['success_message'] = "<strong>Success!</strong> New Meal Plan Added";
-            echo "<meta http-equiv='refresh' content='3; URL=meal-plans'>";
+            echo "<meta http-equiv='refresh' content='3; URL=meal-plan-custom'>";
         }else {
             $_SESSION['error_message'] = "Error adding meal plan".mysqli_error($conn);
         }
