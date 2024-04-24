@@ -58,6 +58,8 @@ include "./components/topnavbar.php";
                                             default:
                                                 $class  = '';
                                         }
+                                    }
+                                    }
                                 ?>
                                 <div class="card-body">
 
@@ -102,7 +104,7 @@ include "./components/topnavbar.php";
                                             <div class="col-md-4 col-lg-6 text-right">
                                                 <div class="text-end">
                                                     <span class="fs-6 font-weight-bold">SUBSCRIPTION PLAN</span>
-                                                    <h6 class="mt-2"><?php echo $subscription_plan; ?> </h6>
+                                                    <h6 class="mt-2"><?php if (!$subscription_plan){echo 'Not Subscribed Yet';}else{echo $subscription_plan;} ?> </h6>
                                                 </div>
                                             </div>
                                         </div>
@@ -114,10 +116,6 @@ include "./components/topnavbar.php";
                                         </div>
                                     </div>
                                 </div>
-                                <?php 
-                                    }
-                                }
-                                ?>
                             </div>
                         </div>
                     </div>
