@@ -28,12 +28,13 @@ include "./components/topnavbar.php";
                                 <?php
                                     $user_id = $_GET['id'];
                                     
-                                    $select_query = "SELECT * FROM users WHERE user_id ='$user_id'";
+                                    $select_query = "SELECT * FROM users, userdiet WHERE user_id ='$user_id' AND user_ID = '$user_id'";
                                     $result = mysqli_query($conn, $select_query);
                                     if (mysqli_num_rows($result) > 0) {
                                     // output data of each row
                                     while($row = mysqli_fetch_assoc($result)) {
                                         $user_id = $row['user_id'];
+                                        $diet = $row['diet'];
                                         $first_name = $row['first_name'];
                                         $last_name = $row['last_name'];
                                         $email = $row['email'];
@@ -101,7 +102,13 @@ include "./components/topnavbar.php";
                                                 <span class="fs-6  font-weight-bold">PHONE</span>
                                                 <h6 class="mt-2"><?php echo $phone; ?></h6>
                                             </div>
-                                            <div class="col-md-4 col-lg-6 text-right">
+                                            <div class="col-md-4 col-lg-6 text-right" style="display: <?php if ($subscription_plan == 'Basic Plan'){ echo 'unset';}elseif ($subscription_plan == 'Customized Plan' || 'Nutrition Coaching Plan'){ echo 'none';}else{ echo 'unset';}?>">
+                                                <div class="text-end">
+                                                    <span class="fs-6 font-weight-bold">SUBSCRIPTION PLAN</span>
+                                                    <h6 class="mt-2"><?php if (!$subscription_plan){echo 'Not Subscribed Yet';}else{echo $subscription_plan;} ?> (<?php echo $diet; ?>)</h6>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-lg-6 text-right" style="display: <?php if ($subscription_plan == 'Customized Plan' OR $subscription_plan == 'Nutrition Coaching Plan'){ echo 'unset';} elseif ($subscription_plan == 'Basic Plan'){ echo 'none';}else{ echo 'unset';}?>">
                                                 <div class="text-end">
                                                     <span class="fs-6 font-weight-bold">SUBSCRIPTION PLAN</span>
                                                     <h6 class="mt-2"><?php if (!$subscription_plan){echo 'Not Subscribed Yet';}else{echo $subscription_plan;} ?> </h6>
