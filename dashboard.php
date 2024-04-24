@@ -49,7 +49,7 @@ include "./components/topnavbar.php";
                                             <tbody>
                                                 <?php
                                                 $dash_id = 1;
-                                                $select_query = "SELECT subscription.subscription_date, subscription.subscription_plan, subscription.userID, subscription.amount, users.user_id, users.first_name, users.last_name FROM subscription INNER JOIN users ON subscription.userID = users.user_id ORDER BY subscription_date DESC LIMIT 10";
+                                                $select_query = "SELECT subscription.subscription_id, subscription.subscription_date, subscription.subscription_plan, subscription.userID, subscription.amount, users.user_id, users.first_name, users.last_name FROM subscription INNER JOIN users ON subscription.userID = users.user_id ORDER BY subscription_date DESC LIMIT 10";
                                                     $result = mysqli_query($conn, $select_query);
                                                     if (mysqli_num_rows($result) > 0) {
                                                         // output data of each row
