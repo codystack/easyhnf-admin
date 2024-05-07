@@ -150,7 +150,7 @@ include "./config/db.php";
             sunday_breakfast='$sunday_breakfast', sunday_breakfast_calorie_count='$sunday_breakfast_calorie_count', sunday_lunch='$sunday_lunch', sunday_lunch_calorie_count='$sunday_lunch_calorie_count', sunday_snack='$sunday_snack', sunday_snack_calorie_count='$sunday_snack_calorie_count', sunday_dinner='$sunday_dinner', sunday_dinner_calorie_count='$sunday_dinner_calorie_count' WHERE plan_id='$plan_id'");
 
             $_SESSION['success_message'] = "Meal plan updated 👍";
-            echo "<meta http-equiv='refresh' content='5; URL=meal-plans'>";
+            echo "<meta http-equiv='refresh' content='5; URL=meal-plan-custom'>";
         } else {
             $_SESSION['error_message'] = "Error updating meal plan.".mysqli_error($conn);
         }

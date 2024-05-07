@@ -12,61 +12,33 @@ require_once "./auth/update.php";
         while($row = mysqli_fetch_assoc($result)) {
             $plan_id = $row['plan_id'];
             $plan_title = $row['plan_title'];
-            $monday_breakfast = $row['monday_breakfast'];
             $monday_breakfast_calorie_count = $row['monday_breakfast_calorie_count'];
-            $monday_lunch = $row['monday_lunch'];
             $monday_lunch_calorie_count = $row['monday_lunch_calorie_count'];
-            $monday_snack = $row['monday_snack'];
             $monday_snack_calorie_count = $row['monday_snack_calorie_count'];
-            $monday_dinner = $row['monday_dinner'];
             $monday_dinner_calorie_count = $row['monday_dinner_calorie_count'];
-            $tuesday_breakfast = $row['tuesday_breakfast'];
             $tuesday_breakfast_calorie_count = $row['tuesday_breakfast_calorie_count'];
-            $tuesday_lunch = $row['tuesday_lunch'];
             $tuesday_lunch_calorie_count = $row['tuesday_lunch_calorie_count'];
-            $tuesday_snack = $row['tuesday_snack'];
             $tuesday_snack_calorie_count = $row['tuesday_snack_calorie_count'];
-            $tuesday_dinner = $row['tuesday_dinner'];
             $tuesday_dinner_calorie_count = $row['tuesday_dinner_calorie_count'];
-            $wednesday_breakfast = $row['wednesday_breakfast'];
             $wednesday_breakfast_calorie_count = $row['wednesday_breakfast_calorie_count'];
-            $wednesday_lunch = $row['wednesday_lunch'];
             $wednesday_lunch_calorie_count = $row['wednesday_lunch_calorie_count'];
-            $wednesday_snack = $row['wednesday_snack'];
             $wednesday_snack_calorie_count = $row['wednesday_snack_calorie_count'];
-            $wednesday_dinner = $row['wednesday_dinner'];
             $wednesday_dinner_calorie_count = $row['wednesday_dinner_calorie_count'];
-            $thursday_breakfast = $row['thursday_breakfast'];
             $thursday_breakfast_calorie_count = $row['thursday_breakfast_calorie_count'];
-            $thursday_lunch = $row['thursday_lunch'];
             $thursday_lunch_calorie_count = $row['thursday_lunch_calorie_count'];
-            $thursday_snack = $row['thursday_snack'];
             $thursday_snack_calorie_count = $row['thursday_snack_calorie_count'];
-            $thursday_dinner = $row['thursday_dinner'];
             $thursday_dinner_calorie_count = $row['thursday_dinner_calorie_count'];
-            $friday_breakfast = $row['friday_breakfast'];
             $friday_breakfast_calorie_count = $row['friday_breakfast_calorie_count'];
-            $friday_lunch = $row['friday_lunch'];
             $friday_lunch_calorie_count = $row['friday_lunch_calorie_count'];
-            $friday_snack = $row['friday_snack'];
             $friday_snack_calorie_count = $row['friday_snack_calorie_count'];
-            $friday_dinner = $row['friday_dinner'];
             $friday_dinner_calorie_count = $row['friday_dinner_calorie_count'];
-            $saturday_breakfast = $row['saturday_breakfast'];
             $saturday_breakfast_calorie_count = $row['saturday_breakfast_calorie_count'];
-            $saturday_lunch = $row['saturday_lunch'];
             $saturday_lunch_calorie_count = $row['saturday_lunch_calorie_count'];
-            $saturday_snack = $row['saturday_snack'];
             $saturday_snack_calorie_count = $row['saturday_snack_calorie_count'];
-            $saturday_dinner = $row['saturday_dinner'];
             $saturday_dinner_calorie_count = $row['saturday_dinner_calorie_count'];
-            $sunday_breakfast = $row['sunday_breakfast'];
             $sunday_breakfast_calorie_count = $row['sunday_breakfast_calorie_count'];
-            $sunday_lunch = $row['sunday_lunch'];
             $sunday_lunch_calorie_count = $row['sunday_lunch_calorie_count'];
-            $sunday_snack = $row['sunday_snack'];
             $sunday_snack_calorie_count = $row['sunday_snack_calorie_count'];
-            $sunday_dinner = $row['sunday_dinner'];
             $sunday_dinner_calorie_count = $row['sunday_dinner_calorie_count'];
         }
     }
@@ -168,7 +140,24 @@ require_once "./auth/update.php";
                                                         <div class="form-group">
                                                             <label for="title">Monday Breakfast</label>
                                                             <select class="form-control" name="monday_breakfast" id="">
-                                                                <option value="<?php echo $monday_breakfast; ?>"><?php echo $monday_breakfast; ?></option>
+                                                                <?php
+                                                                    $plan_id = $_GET['id'];
+
+                                                                    $select_query = "SELECT meals.meal_id, meals.title, custom_meal_plan.plan_id, custom_meal_plan.monday_breakfast_calorie_count, custom_meal_plan.monday_breakfast FROM custom_meal_plan INNER JOIN meals WHERE custom_meal_plan.monday_breakfast = meals.meal_id AND custom_meal_plan.plan_id = '$plan_id'";
+                                                                    $result = mysqli_query($conn, $select_query);
+                                                                    if (mysqli_num_rows($result) > 0) {
+                                                                        // output data of each row
+                                                                        while($row = mysqli_fetch_assoc($result)) {
+                                                                            $title = $row['title'];
+                                                                            $meal_id = $row['meal_id'];
+                                                                            $monday_breakfast = $row['monday_breakfast'];
+                                                                            $monday_breakfast_calorie_count = $row['monday_breakfast_calorie_count'];
+                                                                ?>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?></option>
+                                                                <?php
+                                                                    }
+                                                                }
+                                                                ?>
                                                                 <?php
                                                                 $select_query = "SELECT * FROM meals";
                                                                 $result = mysqli_query($conn, $select_query);
@@ -179,7 +168,7 @@ require_once "./auth/update.php";
                                                                         $meal_code = $row['meal_code'];
                                                                         $title = $row['title'];
                                                                 ?>
-                                                                <option value="<?php echo $title; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
                                                                 <?php
                                                                     }
                                                                 }
@@ -199,7 +188,24 @@ require_once "./auth/update.php";
                                                         <div class="form-group">
                                                             <label for="mealCode">Monday Lunch</label>
                                                             <select class="form-control" name="monday_lunch" id="">
-                                                                <option value="<?php echo $monday_lunch; ?>"><?php echo $monday_lunch; ?></option>
+                                                                <?php
+                                                                    $plan_id = $_GET['id'];
+
+                                                                    $select_query = "SELECT meals.meal_id, meals.title, custom_meal_plan.plan_id, custom_meal_plan.monday_lunch_calorie_count, custom_meal_plan.monday_lunch FROM custom_meal_plan INNER JOIN meals WHERE custom_meal_plan.monday_lunch = meals.meal_id AND custom_meal_plan.plan_id = '$plan_id'";
+                                                                    $result = mysqli_query($conn, $select_query);
+                                                                    if (mysqli_num_rows($result) > 0) {
+                                                                        // output data of each row
+                                                                        while($row = mysqli_fetch_assoc($result)) {
+                                                                            $title = $row['title'];
+                                                                            $meal_id = $row['meal_id'];
+                                                                            $monday_lunch = $row['monday_lunch'];
+                                                                            $monday_lunch_calorie_count = $row['monday_lunch_calorie_count'];
+                                                                ?>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?></option>
+                                                                <?php
+                                                                    }
+                                                                }
+                                                                ?>
                                                                 <?php
                                                                 $select_query = "SELECT * FROM meals";
                                                                 $result = mysqli_query($conn, $select_query);
@@ -210,7 +216,7 @@ require_once "./auth/update.php";
                                                                         $meal_code = $row['meal_code'];
                                                                         $title = $row['title'];
                                                                 ?>
-                                                                <option value="<?php echo $title; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
                                                                 <?php
                                                                     }
                                                                 }
@@ -230,7 +236,24 @@ require_once "./auth/update.php";
                                                         <div class="form-group">
                                                             <label for="mealCode">Monday Snack</label>
                                                             <select class="form-control" name="monday_snack" id="">
-                                                                <option value="<?php echo $monday_snack; ?>"><?php echo $monday_snack; ?></option>
+                                                                <?php
+                                                                    $plan_id = $_GET['id'];
+
+                                                                    $select_query = "SELECT meals.meal_id, meals.title, custom_meal_plan.plan_id, custom_meal_plan.monday_snack_calorie_count, custom_meal_plan.monday_snack FROM custom_meal_plan INNER JOIN meals WHERE custom_meal_plan.monday_snack = meals.meal_id AND custom_meal_plan.plan_id = '$plan_id'";
+                                                                    $result = mysqli_query($conn, $select_query);
+                                                                    if (mysqli_num_rows($result) > 0) {
+                                                                        // output data of each row
+                                                                        while($row = mysqli_fetch_assoc($result)) {
+                                                                            $title = $row['title'];
+                                                                            $meal_id = $row['meal_id'];
+                                                                            $monday_snack = $row['monday_snack'];
+                                                                            $monday_snack_calorie_count = $row['monday_snack_calorie_count'];
+                                                                ?>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?></option>
+                                                                <?php
+                                                                    }
+                                                                }
+                                                                ?>
                                                                 <?php
                                                                 $select_query = "SELECT * FROM meals";
                                                                 $result = mysqli_query($conn, $select_query);
@@ -241,7 +264,7 @@ require_once "./auth/update.php";
                                                                         $meal_code = $row['meal_code'];
                                                                         $title = $row['title'];
                                                                 ?>
-                                                                <option value="<?php echo $title; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
                                                                 <?php
                                                                     }
                                                                 }
@@ -261,7 +284,24 @@ require_once "./auth/update.php";
                                                         <div class="form-group">
                                                             <label for="mealCode">Monday Dinner</label>
                                                             <select class="form-control" name="monday_dinner" id="">
-                                                                <option value="<?php echo $monday_dinner; ?>"><?php echo $monday_dinner; ?></option>
+                                                                <?php
+                                                                    $plan_id = $_GET['id'];
+
+                                                                    $select_query = "SELECT meals.meal_id, meals.title, custom_meal_plan.plan_id, custom_meal_plan.monday_dinner_calorie_count, custom_meal_plan.monday_dinner FROM custom_meal_plan INNER JOIN meals WHERE custom_meal_plan.monday_dinner = meals.meal_id AND custom_meal_plan.plan_id = '$plan_id'";
+                                                                    $result = mysqli_query($conn, $select_query);
+                                                                    if (mysqli_num_rows($result) > 0) {
+                                                                        // output data of each row
+                                                                        while($row = mysqli_fetch_assoc($result)) {
+                                                                            $title = $row['title'];
+                                                                            $meal_id = $row['meal_id'];
+                                                                            $monday_dinner = $row['monday_dinner'];
+                                                                            $monday_dinner_calorie_count = $row['monday_dinner_calorie_count'];
+                                                                ?>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?></option>
+                                                                <?php
+                                                                    }
+                                                                }
+                                                                ?>
                                                                 <?php
                                                                 $select_query = "SELECT * FROM meals";
                                                                 $result = mysqli_query($conn, $select_query);
@@ -272,7 +312,7 @@ require_once "./auth/update.php";
                                                                         $meal_code = $row['meal_code'];
                                                                         $title = $row['title'];
                                                                 ?>
-                                                                <option value="<?php echo $title; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
                                                                 <?php
                                                                     }
                                                                 }
@@ -297,7 +337,24 @@ require_once "./auth/update.php";
                                                         <div class="form-group">
                                                             <label for="title">Tuesday Breakfast</label>
                                                             <select class="form-control" name="tuesday_breakfast" id="">
-                                                                <option value="<?php echo $tuesday_breakfast; ?>"><?php echo $tuesday_breakfast; ?></option>
+                                                                <?php
+                                                                    $plan_id = $_GET['id'];
+
+                                                                    $select_query = "SELECT meals.meal_id, meals.title, custom_meal_plan.plan_id, custom_meal_plan.tuesday_breakfast_calorie_count, custom_meal_plan.tuesday_breakfast FROM custom_meal_plan INNER JOIN meals WHERE custom_meal_plan.tuesday_breakfast = meals.meal_id AND custom_meal_plan.plan_id = '$plan_id'";
+                                                                    $result = mysqli_query($conn, $select_query);
+                                                                    if (mysqli_num_rows($result) > 0) {
+                                                                        // output data of each row
+                                                                        while($row = mysqli_fetch_assoc($result)) {
+                                                                            $title = $row['title'];
+                                                                            $meal_id = $row['meal_id'];
+                                                                            $tuesday_breakfast = $row['tuesday_breakfast'];
+                                                                            $tuesday_breakfast_calorie_count = $row['tuesday_breakfast_calorie_count'];
+                                                                ?>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?></option>
+                                                                <?php
+                                                                    }
+                                                                }
+                                                                ?>
                                                                 <?php
                                                                 $select_query = "SELECT * FROM meals";
                                                                 $result = mysqli_query($conn, $select_query);
@@ -308,7 +365,7 @@ require_once "./auth/update.php";
                                                                         $meal_code = $row['meal_code'];
                                                                         $title = $row['title'];
                                                                 ?>
-                                                                <option value="<?php echo $title; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
                                                                 <?php
                                                                     }
                                                                 }
@@ -328,7 +385,24 @@ require_once "./auth/update.php";
                                                         <div class="form-group">
                                                             <label for="mealCode">Tuesday Lunch</label>
                                                             <select class="form-control" name="tuesday_lunch" id="">
-                                                                <option value="<?php echo $tuesday_lunch; ?>"><?php echo $tuesday_lunch; ?></option>
+                                                                <?php
+                                                                    $plan_id = $_GET['id'];
+
+                                                                    $select_query = "SELECT meals.meal_id, meals.title, custom_meal_plan.plan_id, custom_meal_plan.tuesday_lunch_calorie_count, custom_meal_plan.tuesday_lunch FROM custom_meal_plan INNER JOIN meals WHERE custom_meal_plan.tuesday_lunch = meals.meal_id AND custom_meal_plan.plan_id = '$plan_id'";
+                                                                    $result = mysqli_query($conn, $select_query);
+                                                                    if (mysqli_num_rows($result) > 0) {
+                                                                        // output data of each row
+                                                                        while($row = mysqli_fetch_assoc($result)) {
+                                                                            $title = $row['title'];
+                                                                            $meal_id = $row['meal_id'];
+                                                                            $tuesday_lunch = $row['tuesday_lunch'];
+                                                                            $tuesday_lunch_calorie_count = $row['tuesday_lunch_calorie_count'];
+                                                                ?>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?></option>
+                                                                <?php
+                                                                    }
+                                                                }
+                                                                ?>
                                                                 <?php
                                                                 $select_query = "SELECT * FROM meals";
                                                                 $result = mysqli_query($conn, $select_query);
@@ -339,7 +413,7 @@ require_once "./auth/update.php";
                                                                         $meal_code = $row['meal_code'];
                                                                         $title = $row['title'];
                                                                 ?>
-                                                                <option value="<?php echo $title; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
                                                                 <?php
                                                                     }
                                                                 }
@@ -359,7 +433,24 @@ require_once "./auth/update.php";
                                                         <div class="form-group">
                                                             <label for="mealCode">Tuesday Snack</label>
                                                             <select class="form-control" name="tuesday_snack" id="">
-                                                                <option value="<?php echo $tuesday_snack; ?>"><?php echo $tuesday_snack; ?></option>
+                                                                <?php
+                                                                    $plan_id = $_GET['id'];
+
+                                                                    $select_query = "SELECT meals.meal_id, meals.title, custom_meal_plan.plan_id, custom_meal_plan.tuesday_snack_calorie_count, custom_meal_plan.tuesday_snack FROM custom_meal_plan INNER JOIN meals WHERE custom_meal_plan.tuesday_snack = meals.meal_id AND custom_meal_plan.plan_id = '$plan_id'";
+                                                                    $result = mysqli_query($conn, $select_query);
+                                                                    if (mysqli_num_rows($result) > 0) {
+                                                                        // output data of each row
+                                                                        while($row = mysqli_fetch_assoc($result)) {
+                                                                            $title = $row['title'];
+                                                                            $meal_id = $row['meal_id'];
+                                                                            $tuesday_snack = $row['tuesday_snack'];
+                                                                            $tuesday_snack_calorie_count = $row['tuesday_snack_calorie_count'];
+                                                                ?>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?></option>
+                                                                <?php
+                                                                    }
+                                                                }
+                                                                ?>
                                                                 <?php
                                                                 $select_query = "SELECT * FROM meals";
                                                                 $result = mysqli_query($conn, $select_query);
@@ -370,7 +461,7 @@ require_once "./auth/update.php";
                                                                         $meal_code = $row['meal_code'];
                                                                         $title = $row['title'];
                                                                 ?>
-                                                                <option value="<?php echo $title; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
                                                                 <?php
                                                                     }
                                                                 }
@@ -390,7 +481,24 @@ require_once "./auth/update.php";
                                                         <div class="form-group">
                                                             <label for="mealCode">Tuesday Dinner</label>
                                                             <select class="form-control" name="tuesday_dinner" id="">
-                                                                <option value="<?php echo $tuesday_dinner; ?>"><?php echo $tuesday_dinner; ?></option>
+                                                                <?php
+                                                                    $plan_id = $_GET['id'];
+
+                                                                    $select_query = "SELECT meals.meal_id, meals.title, custom_meal_plan.plan_id, custom_meal_plan.tuesday_dinner_calorie_count, custom_meal_plan.tuesday_dinner FROM custom_meal_plan INNER JOIN meals WHERE custom_meal_plan.tuesday_dinner = meals.meal_id AND custom_meal_plan.plan_id = '$plan_id'";
+                                                                    $result = mysqli_query($conn, $select_query);
+                                                                    if (mysqli_num_rows($result) > 0) {
+                                                                        // output data of each row
+                                                                        while($row = mysqli_fetch_assoc($result)) {
+                                                                            $title = $row['title'];
+                                                                            $meal_id = $row['meal_id'];
+                                                                            $tuesday_dinner = $row['tuesday_dinner'];
+                                                                            $tuesday_dinner_calorie_count = $row['tuesday_dinner_calorie_count'];
+                                                                ?>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?></option>
+                                                                <?php
+                                                                    }
+                                                                }
+                                                                ?>
                                                                 <?php
                                                                 $select_query = "SELECT * FROM meals";
                                                                 $result = mysqli_query($conn, $select_query);
@@ -401,7 +509,7 @@ require_once "./auth/update.php";
                                                                         $meal_code = $row['meal_code'];
                                                                         $title = $row['title'];
                                                                 ?>
-                                                                <option value="<?php echo $title; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
                                                                 <?php
                                                                     }
                                                                 }
@@ -426,7 +534,24 @@ require_once "./auth/update.php";
                                                         <div class="form-group">
                                                             <label for="title">Wednesday Breakfast</label>
                                                             <select class="form-control" name="wednesday_breakfast" id="">
-                                                                <option value="<?php echo $wednesday_breakfast; ?>"><?php echo $wednesday_breakfast; ?></option>
+                                                                <?php
+                                                                    $plan_id = $_GET['id'];
+
+                                                                    $select_query = "SELECT meals.meal_id, meals.title, custom_meal_plan.plan_id, custom_meal_plan.wednesday_breakfast_calorie_count, custom_meal_plan.wednesday_breakfast FROM custom_meal_plan INNER JOIN meals WHERE custom_meal_plan.wednesday_breakfast = meals.meal_id AND custom_meal_plan.plan_id = '$plan_id'";
+                                                                    $result = mysqli_query($conn, $select_query);
+                                                                    if (mysqli_num_rows($result) > 0) {
+                                                                        // output data of each row
+                                                                        while($row = mysqli_fetch_assoc($result)) {
+                                                                            $title = $row['title'];
+                                                                            $meal_id = $row['meal_id'];
+                                                                            $wednesday_breakfast = $row['wednesday_breakfast'];
+                                                                            $wednesday_breakfast_calorie_count = $row['wednesday_breakfast_calorie_count'];
+                                                                ?>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?></option>
+                                                                <?php
+                                                                    }
+                                                                }
+                                                                ?>
                                                                 <?php
                                                                 $select_query = "SELECT * FROM meals";
                                                                 $result = mysqli_query($conn, $select_query);
@@ -437,7 +562,7 @@ require_once "./auth/update.php";
                                                                         $meal_code = $row['meal_code'];
                                                                         $title = $row['title'];
                                                                 ?>
-                                                                <option value="<?php echo $title; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
                                                                 <?php
                                                                     }
                                                                 }
@@ -457,7 +582,24 @@ require_once "./auth/update.php";
                                                         <div class="form-group">
                                                             <label for="mealCode">Wednesday Lunch</label>
                                                             <select class="form-control" name="wednesday_lunch" id="">
-                                                                <option value="<?php echo $wednesday_lunch; ?>"><?php echo $wednesday_lunch; ?></option>
+                                                                <?php
+                                                                    $plan_id = $_GET['id'];
+
+                                                                    $select_query = "SELECT meals.meal_id, meals.title, custom_meal_plan.plan_id, custom_meal_plan.wednesday_lunch_calorie_count, custom_meal_plan.wednesday_lunch FROM custom_meal_plan INNER JOIN meals WHERE custom_meal_plan.wednesday_lunch = meals.meal_id AND custom_meal_plan.plan_id = '$plan_id'";
+                                                                    $result = mysqli_query($conn, $select_query);
+                                                                    if (mysqli_num_rows($result) > 0) {
+                                                                        // output data of each row
+                                                                        while($row = mysqli_fetch_assoc($result)) {
+                                                                            $title = $row['title'];
+                                                                            $meal_id = $row['meal_id'];
+                                                                            $wednesday_lunch = $row['wednesday_lunch'];
+                                                                            $wednesday_lunch_calorie_count = $row['wednesday_lunch_calorie_count'];
+                                                                ?>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?></option>
+                                                                <?php
+                                                                    }
+                                                                }
+                                                                ?>
                                                                 <?php
                                                                 $select_query = "SELECT * FROM meals";
                                                                 $result = mysqli_query($conn, $select_query);
@@ -468,7 +610,7 @@ require_once "./auth/update.php";
                                                                         $meal_code = $row['meal_code'];
                                                                         $title = $row['title'];
                                                                 ?>
-                                                                <option value="<?php echo $title; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
                                                                 <?php
                                                                     }
                                                                 }
@@ -488,7 +630,24 @@ require_once "./auth/update.php";
                                                         <div class="form-group">
                                                             <label for="mealCode">Wednesday Snack</label>
                                                             <select class="form-control" name="wednesday_snack" id="">
-                                                                <option value="<?php echo $wednesday_snack; ?>"><?php echo $wednesday_snack; ?></option>
+                                                                <?php
+                                                                    $plan_id = $_GET['id'];
+
+                                                                    $select_query = "SELECT meals.meal_id, meals.title, custom_meal_plan.plan_id, custom_meal_plan.wednesday_snack_calorie_count, custom_meal_plan.wednesday_snack FROM custom_meal_plan INNER JOIN meals WHERE custom_meal_plan.wednesday_snack = meals.meal_id AND custom_meal_plan.plan_id = '$plan_id'";
+                                                                    $result = mysqli_query($conn, $select_query);
+                                                                    if (mysqli_num_rows($result) > 0) {
+                                                                        // output data of each row
+                                                                        while($row = mysqli_fetch_assoc($result)) {
+                                                                            $title = $row['title'];
+                                                                            $meal_id = $row['meal_id'];
+                                                                            $wednesday_snack = $row['wednesday_snack'];
+                                                                            $wednesday_snack_calorie_count = $row['wednesday_snack_calorie_count'];
+                                                                ?>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?></option>
+                                                                <?php
+                                                                    }
+                                                                }
+                                                                ?>
                                                                 <?php
                                                                 $select_query = "SELECT * FROM meals";
                                                                 $result = mysqli_query($conn, $select_query);
@@ -499,7 +658,7 @@ require_once "./auth/update.php";
                                                                         $meal_code = $row['meal_code'];
                                                                         $title = $row['title'];
                                                                 ?>
-                                                                <option value="<?php echo $title; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
                                                                 <?php
                                                                     }
                                                                 }
@@ -519,7 +678,24 @@ require_once "./auth/update.php";
                                                         <div class="form-group">
                                                             <label for="mealCode">Wednesday Dinner</label>
                                                             <select class="form-control" name="wednesday_dinner" id="">
-                                                                <option value="<?php echo $wednesday_dinner; ?>"><?php echo $wednesday_dinner; ?></option>
+                                                                <?php
+                                                                    $plan_id = $_GET['id'];
+
+                                                                    $select_query = "SELECT meals.meal_id, meals.title, custom_meal_plan.plan_id, custom_meal_plan.wednesday_dinner_calorie_count, custom_meal_plan.wednesday_dinner FROM custom_meal_plan INNER JOIN meals WHERE custom_meal_plan.wednesday_dinner = meals.meal_id AND custom_meal_plan.plan_id = '$plan_id'";
+                                                                    $result = mysqli_query($conn, $select_query);
+                                                                    if (mysqli_num_rows($result) > 0) {
+                                                                        // output data of each row
+                                                                        while($row = mysqli_fetch_assoc($result)) {
+                                                                            $title = $row['title'];
+                                                                            $meal_id = $row['meal_id'];
+                                                                            $wednesday_dinner = $row['wednesday_dinner'];
+                                                                            $wednesday_dinner_calorie_count = $row['wednesday_dinner_calorie_count'];
+                                                                ?>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?></option>
+                                                                <?php
+                                                                    }
+                                                                }
+                                                                ?>
                                                                 <?php
                                                                 $select_query = "SELECT * FROM meals";
                                                                 $result = mysqli_query($conn, $select_query);
@@ -530,7 +706,7 @@ require_once "./auth/update.php";
                                                                         $meal_code = $row['meal_code'];
                                                                         $title = $row['title'];
                                                                 ?>
-                                                                <option value="<?php echo $title; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
                                                                 <?php
                                                                     }
                                                                 }
@@ -555,7 +731,24 @@ require_once "./auth/update.php";
                                                         <div class="form-group">
                                                             <label for="title">Thursday Breakfast</label>
                                                             <select class="form-control" name="thursday_breakfast" id="">
-                                                                <option value="<?php echo $thursday_breakfast; ?>"><?php echo $thursday_breakfast; ?></option>
+                                                                <?php
+                                                                    $plan_id = $_GET['id'];
+
+                                                                    $select_query = "SELECT meals.meal_id, meals.title, custom_meal_plan.plan_id, custom_meal_plan.thursday_breakfast_calorie_count, custom_meal_plan.thursday_breakfast FROM custom_meal_plan INNER JOIN meals WHERE custom_meal_plan.thursday_breakfast = meals.meal_id AND custom_meal_plan.plan_id = '$plan_id'";
+                                                                    $result = mysqli_query($conn, $select_query);
+                                                                    if (mysqli_num_rows($result) > 0) {
+                                                                        // output data of each row
+                                                                        while($row = mysqli_fetch_assoc($result)) {
+                                                                            $title = $row['title'];
+                                                                            $meal_id = $row['meal_id'];
+                                                                            $thursday_breakfast = $row['thursday_breakfast'];
+                                                                            $thursday_breakfast_calorie_count = $row['thursday_breakfast_calorie_count'];
+                                                                ?>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?></option>
+                                                                <?php
+                                                                    }
+                                                                }
+                                                                ?>
                                                                 <?php
                                                                 $select_query = "SELECT * FROM meals";
                                                                 $result = mysqli_query($conn, $select_query);
@@ -566,7 +759,7 @@ require_once "./auth/update.php";
                                                                         $meal_code = $row['meal_code'];
                                                                         $title = $row['title'];
                                                                 ?>
-                                                                <option value="<?php echo $title; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
                                                                 <?php
                                                                     }
                                                                 }
@@ -586,7 +779,24 @@ require_once "./auth/update.php";
                                                         <div class="form-group">
                                                             <label for="mealCode">Thursday Lunch</label>
                                                             <select class="form-control" name="thursday_lunch" id="">
-                                                                <option value="<?php echo $thursday_lunch; ?>"><?php echo $thursday_lunch; ?></option>
+                                                                <?php
+                                                                    $plan_id = $_GET['id'];
+
+                                                                    $select_query = "SELECT meals.meal_id, meals.title, custom_meal_plan.plan_id, custom_meal_plan.thursday_lunch_calorie_count, custom_meal_plan.thursday_lunch FROM custom_meal_plan INNER JOIN meals WHERE custom_meal_plan.thursday_lunch = meals.meal_id AND custom_meal_plan.plan_id = '$plan_id'";
+                                                                    $result = mysqli_query($conn, $select_query);
+                                                                    if (mysqli_num_rows($result) > 0) {
+                                                                        // output data of each row
+                                                                        while($row = mysqli_fetch_assoc($result)) {
+                                                                            $title = $row['title'];
+                                                                            $meal_id = $row['meal_id'];
+                                                                            $thursday_lunch = $row['thursday_lunch'];
+                                                                            $thursday_lunch_calorie_count = $row['thursday_lunch_calorie_count'];
+                                                                ?>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?></option>
+                                                                <?php
+                                                                    }
+                                                                }
+                                                                ?>
                                                                 <?php
                                                                 $select_query = "SELECT * FROM meals";
                                                                 $result = mysqli_query($conn, $select_query);
@@ -597,7 +807,7 @@ require_once "./auth/update.php";
                                                                         $meal_code = $row['meal_code'];
                                                                         $title = $row['title'];
                                                                 ?>
-                                                                <option value="<?php echo $title; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
                                                                 <?php
                                                                     }
                                                                 }
@@ -617,7 +827,24 @@ require_once "./auth/update.php";
                                                         <div class="form-group">
                                                             <label for="mealCode">Thursday Snack</label>
                                                             <select class="form-control" name="thursday_snack" id="">
-                                                                <option value="<?php echo $thursday_snack; ?>"><?php echo $thursday_snack; ?></option>
+                                                                <?php
+                                                                    $plan_id = $_GET['id'];
+
+                                                                    $select_query = "SELECT meals.meal_id, meals.title, custom_meal_plan.plan_id, custom_meal_plan.thursday_snack_calorie_count, custom_meal_plan.thursday_snack FROM custom_meal_plan INNER JOIN meals WHERE custom_meal_plan.thursday_snack = meals.meal_id AND custom_meal_plan.plan_id = '$plan_id'";
+                                                                    $result = mysqli_query($conn, $select_query);
+                                                                    if (mysqli_num_rows($result) > 0) {
+                                                                        // output data of each row
+                                                                        while($row = mysqli_fetch_assoc($result)) {
+                                                                            $title = $row['title'];
+                                                                            $meal_id = $row['meal_id'];
+                                                                            $thursday_snack = $row['thursday_snack'];
+                                                                            $thursday_snack_calorie_count = $row['thursday_snack_calorie_count'];
+                                                                ?>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?></option>
+                                                                <?php
+                                                                    }
+                                                                }
+                                                                ?>
                                                                 <?php
                                                                 $select_query = "SELECT * FROM meals";
                                                                 $result = mysqli_query($conn, $select_query);
@@ -628,7 +855,7 @@ require_once "./auth/update.php";
                                                                         $meal_code = $row['meal_code'];
                                                                         $title = $row['title'];
                                                                 ?>
-                                                                <option value="<?php echo $title; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
                                                                 <?php
                                                                     }
                                                                 }
@@ -648,7 +875,24 @@ require_once "./auth/update.php";
                                                         <div class="form-group">
                                                             <label for="mealCode">Thursday Dinner</label>
                                                             <select class="form-control" name="thursday_dinner" id="">
-                                                                <option value="<?php echo $thursday_dinner; ?>"><?php echo $thursday_dinner; ?></option>
+                                                                <?php
+                                                                    $plan_id = $_GET['id'];
+
+                                                                    $select_query = "SELECT meals.meal_id, meals.title, custom_meal_plan.plan_id, custom_meal_plan.thursday_dinner_calorie_count, custom_meal_plan.thursday_dinner FROM custom_meal_plan INNER JOIN meals WHERE custom_meal_plan.thursday_dinner = meals.meal_id AND custom_meal_plan.plan_id = '$plan_id'";
+                                                                    $result = mysqli_query($conn, $select_query);
+                                                                    if (mysqli_num_rows($result) > 0) {
+                                                                        // output data of each row
+                                                                        while($row = mysqli_fetch_assoc($result)) {
+                                                                            $title = $row['title'];
+                                                                            $meal_id = $row['meal_id'];
+                                                                            $thursday_dinner = $row['thursday_dinner'];
+                                                                            $thursday_dinner_calorie_count = $row['thursday_dinner_calorie_count'];
+                                                                ?>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?></option>
+                                                                <?php
+                                                                    }
+                                                                }
+                                                                ?>
                                                                 <?php
                                                                 $select_query = "SELECT * FROM meals";
                                                                 $result = mysqli_query($conn, $select_query);
@@ -659,7 +903,7 @@ require_once "./auth/update.php";
                                                                         $meal_code = $row['meal_code'];
                                                                         $title = $row['title'];
                                                                 ?>
-                                                                <option value="<?php echo $title; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
                                                                 <?php
                                                                     }
                                                                 }
@@ -684,7 +928,24 @@ require_once "./auth/update.php";
                                                         <div class="form-group">
                                                             <label for="title">Friday Breakfast</label>
                                                             <select class="form-control" name="friday_breakfast" id="">
-                                                                <option value="<?php echo $friday_breakfast; ?>"><?php echo $friday_breakfast; ?></option>
+                                                                <?php
+                                                                    $plan_id = $_GET['id'];
+
+                                                                    $select_query = "SELECT meals.meal_id, meals.title, custom_meal_plan.plan_id, custom_meal_plan.friday_breakfast_calorie_count, custom_meal_plan.friday_breakfast FROM custom_meal_plan INNER JOIN meals WHERE custom_meal_plan.friday_breakfast = meals.meal_id AND custom_meal_plan.plan_id = '$plan_id'";
+                                                                    $result = mysqli_query($conn, $select_query);
+                                                                    if (mysqli_num_rows($result) > 0) {
+                                                                        // output data of each row
+                                                                        while($row = mysqli_fetch_assoc($result)) {
+                                                                            $title = $row['title'];
+                                                                            $meal_id = $row['meal_id'];
+                                                                            $friday_breakfast = $row['friday_breakfast'];
+                                                                            $friday_breakfast_calorie_count = $row['friday_breakfast_calorie_count'];
+                                                                ?>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?></option>
+                                                                <?php
+                                                                    }
+                                                                }
+                                                                ?>
                                                                 <?php
                                                                 $select_query = "SELECT * FROM meals";
                                                                 $result = mysqli_query($conn, $select_query);
@@ -695,7 +956,7 @@ require_once "./auth/update.php";
                                                                         $meal_code = $row['meal_code'];
                                                                         $title = $row['title'];
                                                                 ?>
-                                                                <option value="<?php echo $title; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
                                                                 <?php
                                                                     }
                                                                 }
@@ -716,7 +977,24 @@ require_once "./auth/update.php";
                                                         <div class="form-group">
                                                             <label for="mealCode">Friday Lunch</label>
                                                             <select class="form-control" name="friday_lunch" id="">
-                                                                <option value="<?php echo $friday_lunch; ?>"><?php echo $friday_lunch; ?></option>
+                                                                <?php
+                                                                    $plan_id = $_GET['id'];
+
+                                                                    $select_query = "SELECT meals.meal_id, meals.title, custom_meal_plan.plan_id, custom_meal_plan.friday_lunch_calorie_count, custom_meal_plan.friday_lunch FROM custom_meal_plan INNER JOIN meals WHERE custom_meal_plan.friday_lunch = meals.meal_id AND custom_meal_plan.plan_id = '$plan_id'";
+                                                                    $result = mysqli_query($conn, $select_query);
+                                                                    if (mysqli_num_rows($result) > 0) {
+                                                                        // output data of each row
+                                                                        while($row = mysqli_fetch_assoc($result)) {
+                                                                            $title = $row['title'];
+                                                                            $meal_id = $row['meal_id'];
+                                                                            $friday_lunch = $row['friday_lunch'];
+                                                                            $friday_lunch_calorie_count = $row['friday_lunch_calorie_count'];
+                                                                ?>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?></option>
+                                                                <?php
+                                                                    }
+                                                                }
+                                                                ?>
                                                                 <?php
                                                                 $select_query = "SELECT * FROM meals";
                                                                 $result = mysqli_query($conn, $select_query);
@@ -727,7 +1005,7 @@ require_once "./auth/update.php";
                                                                         $meal_code = $row['meal_code'];
                                                                         $title = $row['title'];
                                                                 ?>
-                                                                <option value="<?php echo $title; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
                                                                 <?php
                                                                     }
                                                                 }
@@ -747,7 +1025,24 @@ require_once "./auth/update.php";
                                                         <div class="form-group">
                                                             <label for="mealCode">Friday Snack</label>
                                                             <select class="form-control" name="friday_snack" id="">
-                                                                <option value="<?php echo $friday_snack; ?>"><?php echo $friday_snack; ?></option>
+                                                                <?php
+                                                                    $plan_id = $_GET['id'];
+
+                                                                    $select_query = "SELECT meals.meal_id, meals.title, custom_meal_plan.plan_id, custom_meal_plan.friday_snack_calorie_count, custom_meal_plan.friday_snack FROM custom_meal_plan INNER JOIN meals WHERE custom_meal_plan.friday_snack = meals.meal_id AND custom_meal_plan.plan_id = '$plan_id'";
+                                                                    $result = mysqli_query($conn, $select_query);
+                                                                    if (mysqli_num_rows($result) > 0) {
+                                                                        // output data of each row
+                                                                        while($row = mysqli_fetch_assoc($result)) {
+                                                                            $title = $row['title'];
+                                                                            $meal_id = $row['meal_id'];
+                                                                            $friday_snack = $row['friday_snack'];
+                                                                            $friday_snack_calorie_count = $row['friday_snack_calorie_count'];
+                                                                ?>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?></option>
+                                                                <?php
+                                                                    }
+                                                                }
+                                                                ?>
                                                                 <?php
                                                                 $select_query = "SELECT * FROM meals";
                                                                 $result = mysqli_query($conn, $select_query);
@@ -758,7 +1053,7 @@ require_once "./auth/update.php";
                                                                         $meal_code = $row['meal_code'];
                                                                         $title = $row['title'];
                                                                 ?>
-                                                                <option value="<?php echo $title; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
                                                                 <?php
                                                                     }
                                                                 }
@@ -778,7 +1073,24 @@ require_once "./auth/update.php";
                                                         <div class="form-group">
                                                             <label for="mealCode">Friday Dinner</label>
                                                             <select class="form-control" name="friday_dinner" id="">
-                                                                <option value="<?php echo $friday_dinner; ?>"><?php echo $friday_dinner; ?></option>
+                                                                <?php
+                                                                    $plan_id = $_GET['id'];
+
+                                                                    $select_query = "SELECT meals.meal_id, meals.title, custom_meal_plan.plan_id, custom_meal_plan.friday_dinner_calorie_count, custom_meal_plan.friday_dinner FROM custom_meal_plan INNER JOIN meals WHERE custom_meal_plan.friday_dinner = meals.meal_id AND custom_meal_plan.plan_id = '$plan_id'";
+                                                                    $result = mysqli_query($conn, $select_query);
+                                                                    if (mysqli_num_rows($result) > 0) {
+                                                                        // output data of each row
+                                                                        while($row = mysqli_fetch_assoc($result)) {
+                                                                            $title = $row['title'];
+                                                                            $meal_id = $row['meal_id'];
+                                                                            $friday_dinner = $row['friday_dinner'];
+                                                                            $friday_dinner_calorie_count = $row['friday_dinner_calorie_count'];
+                                                                ?>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?></option>
+                                                                <?php
+                                                                    }
+                                                                }
+                                                                ?>
                                                                 <?php
                                                                 $select_query = "SELECT * FROM meals";
                                                                 $result = mysqli_query($conn, $select_query);
@@ -789,7 +1101,7 @@ require_once "./auth/update.php";
                                                                         $meal_code = $row['meal_code'];
                                                                         $title = $row['title'];
                                                                 ?>
-                                                                <option value="<?php echo $title; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
                                                                 <?php
                                                                     }
                                                                 }
@@ -814,7 +1126,24 @@ require_once "./auth/update.php";
                                                         <div class="form-group">
                                                             <label for="title">Saturday Breakfast</label>
                                                             <select class="form-control" name="saturday_breakfast" id="">
-                                                                <option value="<?php echo $saturday_breakfast; ?>"><?php echo $saturday_breakfast; ?></option>
+                                                                <?php
+                                                                    $plan_id = $_GET['id'];
+
+                                                                    $select_query = "SELECT meals.meal_id, meals.title, custom_meal_plan.plan_id, custom_meal_plan.saturday_breakfast_calorie_count, custom_meal_plan.saturday_breakfast FROM custom_meal_plan INNER JOIN meals WHERE custom_meal_plan.saturday_breakfast = meals.meal_id AND custom_meal_plan.plan_id = '$plan_id'";
+                                                                    $result = mysqli_query($conn, $select_query);
+                                                                    if (mysqli_num_rows($result) > 0) {
+                                                                        // output data of each row
+                                                                        while($row = mysqli_fetch_assoc($result)) {
+                                                                            $title = $row['title'];
+                                                                            $meal_id = $row['meal_id'];
+                                                                            $saturday_breakfast = $row['saturday_breakfast'];
+                                                                            $saturday_breakfast_calorie_count = $row['saturday_breakfast_calorie_count'];
+                                                                ?>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?></option>
+                                                                <?php
+                                                                    }
+                                                                }
+                                                                ?>
                                                                 <?php
                                                                 $select_query = "SELECT * FROM meals";
                                                                 $result = mysqli_query($conn, $select_query);
@@ -825,7 +1154,7 @@ require_once "./auth/update.php";
                                                                         $meal_code = $row['meal_code'];
                                                                         $title = $row['title'];
                                                                 ?>
-                                                                <option value="<?php echo $title; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
                                                                 <?php
                                                                     }
                                                                 }
@@ -845,7 +1174,24 @@ require_once "./auth/update.php";
                                                         <div class="form-group">
                                                             <label for="mealCode">Saturday Lunch</label>
                                                             <select class="form-control" name="saturday_lunch" id="">
-                                                                <option value="<?php echo $saturday_lunch; ?>"><?php echo $saturday_lunch; ?></option>
+                                                                <?php
+                                                                    $plan_id = $_GET['id'];
+
+                                                                    $select_query = "SELECT meals.meal_id, meals.title, custom_meal_plan.plan_id, custom_meal_plan.saturday_lunch_calorie_count, custom_meal_plan.saturday_lunch FROM custom_meal_plan INNER JOIN meals WHERE custom_meal_plan.saturday_lunch = meals.meal_id AND custom_meal_plan.plan_id = '$plan_id'";
+                                                                    $result = mysqli_query($conn, $select_query);
+                                                                    if (mysqli_num_rows($result) > 0) {
+                                                                        // output data of each row
+                                                                        while($row = mysqli_fetch_assoc($result)) {
+                                                                            $title = $row['title'];
+                                                                            $meal_id = $row['meal_id'];
+                                                                            $saturday_lunch = $row['saturday_lunch'];
+                                                                            $saturday_lunch_calorie_count = $row['saturday_lunch_calorie_count'];
+                                                                ?>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?></option>
+                                                                <?php
+                                                                    }
+                                                                }
+                                                                ?>
                                                                 <?php
                                                                 $select_query = "SELECT * FROM meals";
                                                                 $result = mysqli_query($conn, $select_query);
@@ -856,7 +1202,7 @@ require_once "./auth/update.php";
                                                                         $meal_code = $row['meal_code'];
                                                                         $title = $row['title'];
                                                                 ?>
-                                                                <option value="<?php echo $title; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
                                                                 <?php
                                                                     }
                                                                 }
@@ -876,7 +1222,24 @@ require_once "./auth/update.php";
                                                         <div class="form-group">
                                                             <label for="mealCode">Saturday Snack</label>
                                                             <select class="form-control" name="saturday_snack" id="">
-                                                                <option value="<?php echo $saturday_snack; ?>"><?php echo $saturday_snack; ?></option>
+                                                                <?php
+                                                                    $plan_id = $_GET['id'];
+
+                                                                    $select_query = "SELECT meals.meal_id, meals.title, custom_meal_plan.plan_id, custom_meal_plan.saturday_snack_calorie_count, custom_meal_plan.saturday_snack FROM custom_meal_plan INNER JOIN meals WHERE custom_meal_plan.saturday_snack = meals.meal_id AND custom_meal_plan.plan_id = '$plan_id'";
+                                                                    $result = mysqli_query($conn, $select_query);
+                                                                    if (mysqli_num_rows($result) > 0) {
+                                                                        // output data of each row
+                                                                        while($row = mysqli_fetch_assoc($result)) {
+                                                                            $title = $row['title'];
+                                                                            $meal_id = $row['meal_id'];
+                                                                            $saturday_snack = $row['saturday_snack'];
+                                                                            $saturday_snack_calorie_count = $row['saturday_snack_calorie_count'];
+                                                                ?>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?></option>
+                                                                <?php
+                                                                    }
+                                                                }
+                                                                ?>
                                                                 <?php
                                                                 $select_query = "SELECT * FROM meals";
                                                                 $result = mysqli_query($conn, $select_query);
@@ -887,7 +1250,7 @@ require_once "./auth/update.php";
                                                                         $meal_code = $row['meal_code'];
                                                                         $title = $row['title'];
                                                                 ?>
-                                                                <option value="<?php echo $title; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
                                                                 <?php
                                                                     }
                                                                 }
@@ -907,7 +1270,24 @@ require_once "./auth/update.php";
                                                         <div class="form-group">
                                                             <label for="mealCode">Saturday Dinner</label>
                                                             <select class="form-control" name="saturday_dinner" id="">
-                                                                <option value="<?php echo $saturday_dinner; ?>"><?php echo $saturday_dinner; ?></option>
+                                                                <?php
+                                                                    $plan_id = $_GET['id'];
+
+                                                                    $select_query = "SELECT meals.meal_id, meals.title, custom_meal_plan.plan_id, custom_meal_plan.saturday_dinner_calorie_count, custom_meal_plan.saturday_dinner FROM custom_meal_plan INNER JOIN meals WHERE custom_meal_plan.saturday_dinner = meals.meal_id AND custom_meal_plan.plan_id = '$plan_id'";
+                                                                    $result = mysqli_query($conn, $select_query);
+                                                                    if (mysqli_num_rows($result) > 0) {
+                                                                        // output data of each row
+                                                                        while($row = mysqli_fetch_assoc($result)) {
+                                                                            $title = $row['title'];
+                                                                            $meal_id = $row['meal_id'];
+                                                                            $saturday_dinner = $row['saturday_dinner'];
+                                                                            $saturday_dinner_calorie_count = $row['saturday_dinner_calorie_count'];
+                                                                ?>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?></option>
+                                                                <?php
+                                                                    }
+                                                                }
+                                                                ?>
                                                                 <?php
                                                                 $select_query = "SELECT * FROM meals";
                                                                 $result = mysqli_query($conn, $select_query);
@@ -918,7 +1298,7 @@ require_once "./auth/update.php";
                                                                         $meal_code = $row['meal_code'];
                                                                         $title = $row['title'];
                                                                 ?>
-                                                                <option value="<?php echo $title; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
                                                                 <?php
                                                                     }
                                                                 }
@@ -944,7 +1324,24 @@ require_once "./auth/update.php";
                                                         <div class="form-group">
                                                             <label for="title">Sunday Breakfast</label>
                                                             <select class="form-control" name="sunday_breakfast" id="">
-                                                                <option value="<?php echo $sunday_breakfast; ?>"><?php echo $sunday_breakfast; ?></option>
+                                                                <?php
+                                                                    $plan_id = $_GET['id'];
+
+                                                                    $select_query = "SELECT meals.meal_id, meals.title, custom_meal_plan.plan_id, custom_meal_plan.sunday_breakfast_calorie_count, custom_meal_plan.sunday_breakfast FROM custom_meal_plan INNER JOIN meals WHERE custom_meal_plan.sunday_breakfast = meals.meal_id AND custom_meal_plan.plan_id = '$plan_id'";
+                                                                    $result = mysqli_query($conn, $select_query);
+                                                                    if (mysqli_num_rows($result) > 0) {
+                                                                        // output data of each row
+                                                                        while($row = mysqli_fetch_assoc($result)) {
+                                                                            $title = $row['title'];
+                                                                            $meal_id = $row['meal_id'];
+                                                                            $sunday_breakfast = $row['sunday_breakfast'];
+                                                                            $sunday_breakfast_calorie_count = $row['sunday_breakfast_calorie_count'];
+                                                                ?>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?></option>
+                                                                <?php
+                                                                    }
+                                                                }
+                                                                ?>
                                                                 <?php
                                                                 $select_query = "SELECT * FROM meals";
                                                                 $result = mysqli_query($conn, $select_query);
@@ -955,7 +1352,7 @@ require_once "./auth/update.php";
                                                                         $meal_code = $row['meal_code'];
                                                                         $title = $row['title'];
                                                                 ?>
-                                                                <option value="<?php echo $title; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
                                                                 <?php
                                                                     }
                                                                 }
@@ -975,7 +1372,24 @@ require_once "./auth/update.php";
                                                         <div class="form-group">
                                                             <label for="mealCode">Sunday Lunch</label>
                                                             <select class="form-control" name="sunday_lunch" id="">
-                                                                <option value="<?php echo $sunday_lunch; ?>"><?php echo $sunday_lunch; ?></option>
+                                                                <?php
+                                                                    $plan_id = $_GET['id'];
+
+                                                                    $select_query = "SELECT meals.meal_id, meals.title, custom_meal_plan.plan_id, custom_meal_plan.sunday_lunch_calorie_count, custom_meal_plan.sunday_lunch FROM custom_meal_plan INNER JOIN meals WHERE custom_meal_plan.sunday_lunch = meals.meal_id AND custom_meal_plan.plan_id = '$plan_id'";
+                                                                    $result = mysqli_query($conn, $select_query);
+                                                                    if (mysqli_num_rows($result) > 0) {
+                                                                        // output data of each row
+                                                                        while($row = mysqli_fetch_assoc($result)) {
+                                                                            $title = $row['title'];
+                                                                            $meal_id = $row['meal_id'];
+                                                                            $sunday_lunch = $row['sunday_lunch'];
+                                                                            $sunday_lunch_calorie_count = $row['sunday_lunch_calorie_count'];
+                                                                ?>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?></option>
+                                                                <?php
+                                                                    }
+                                                                }
+                                                                ?>
                                                                 <?php
                                                                 $select_query = "SELECT * FROM meals";
                                                                 $result = mysqli_query($conn, $select_query);
@@ -986,7 +1400,7 @@ require_once "./auth/update.php";
                                                                         $meal_code = $row['meal_code'];
                                                                         $title = $row['title'];
                                                                 ?>
-                                                                <option value="<?php echo $title; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
                                                                 <?php
                                                                     }
                                                                 }
@@ -1006,7 +1420,24 @@ require_once "./auth/update.php";
                                                         <div class="form-group">
                                                             <label for="mealCode">Sunday Snack</label>
                                                             <select class="form-control" name="sunday_snack" id="">
-                                                                <option value="<?php echo $sunday_snack; ?>"><?php echo $sunday_snack; ?></option>
+                                                                <?php
+                                                                    $plan_id = $_GET['id'];
+
+                                                                    $select_query = "SELECT meals.meal_id, meals.title, custom_meal_plan.plan_id, custom_meal_plan.sunday_snack_calorie_count, custom_meal_plan.sunday_snack FROM custom_meal_plan INNER JOIN meals WHERE custom_meal_plan.sunday_snack = meals.meal_id AND custom_meal_plan.plan_id = '$plan_id'";
+                                                                    $result = mysqli_query($conn, $select_query);
+                                                                    if (mysqli_num_rows($result) > 0) {
+                                                                        // output data of each row
+                                                                        while($row = mysqli_fetch_assoc($result)) {
+                                                                            $title = $row['title'];
+                                                                            $meal_id = $row['meal_id'];
+                                                                            $sunday_snack = $row['sunday_snack'];
+                                                                            $sunday_snack_calorie_count = $row['sunday_snack_calorie_count'];
+                                                                ?>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?></option>
+                                                                <?php
+                                                                    }
+                                                                }
+                                                                ?>
                                                                 <?php
                                                                 $select_query = "SELECT * FROM meals";
                                                                 $result = mysqli_query($conn, $select_query);
@@ -1017,7 +1448,7 @@ require_once "./auth/update.php";
                                                                         $meal_code = $row['meal_code'];
                                                                         $title = $row['title'];
                                                                 ?>
-                                                                <option value="<?php echo $title; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
                                                                 <?php
                                                                     }
                                                                 }
@@ -1037,7 +1468,24 @@ require_once "./auth/update.php";
                                                         <div class="form-group">
                                                             <label for="mealCode">Sunday Dinner</label>
                                                             <select class="form-control" name="sunday_dinner" id="">
-                                                                <option value="<?php echo $sunday_dinner; ?>"><?php echo $sunday_dinner; ?></option>
+                                                                <?php
+                                                                    $plan_id = $_GET['id'];
+
+                                                                    $select_query = "SELECT meals.meal_id, meals.title, custom_meal_plan.plan_id, custom_meal_plan.sunday_dinner_calorie_count, custom_meal_plan.sunday_dinner FROM custom_meal_plan INNER JOIN meals WHERE custom_meal_plan.sunday_dinner = meals.meal_id AND custom_meal_plan.plan_id = '$plan_id'";
+                                                                    $result = mysqli_query($conn, $select_query);
+                                                                    if (mysqli_num_rows($result) > 0) {
+                                                                        // output data of each row
+                                                                        while($row = mysqli_fetch_assoc($result)) {
+                                                                            $title = $row['title'];
+                                                                            $meal_id = $row['meal_id'];
+                                                                            $sunday_dinner = $row['sunday_dinner'];
+                                                                            $sunday_dinner_calorie_count = $row['sunday_dinner_calorie_count'];
+                                                                ?>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?></option>
+                                                                <?php
+                                                                    }
+                                                                }
+                                                                ?>
                                                                 <?php
                                                                 $select_query = "SELECT * FROM meals";
                                                                 $result = mysqli_query($conn, $select_query);
@@ -1048,7 +1496,7 @@ require_once "./auth/update.php";
                                                                         $meal_code = $row['meal_code'];
                                                                         $title = $row['title'];
                                                                 ?>
-                                                                <option value="<?php echo $title; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
+                                                                <option value="<?php echo $meal_id; ?>"><?php echo $title; ?>(<?php echo $meal_code; ?>)</option>
                                                                 <?php
                                                                     }
                                                                 }
