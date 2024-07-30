@@ -78,6 +78,27 @@ require_once "./auth/queries.php";
                                                             <input type="text" class="form-control" name="title" id="title" placeholder="Enter meal title">
                                                         </div>
                                                     </div>
+                                                    <div class="col-md-4 mx-auto">
+                                                        <div class="form-group">
+                                                            <label for="title">Select Diet</label>
+                                                            <select class="form-control" name="diet" id="">
+                                                                <?php
+                                                                $select_query = "SELECT * FROM basic_diet ";
+                                                                $result = mysqli_query($conn, $select_query);
+                                                                if (mysqli_num_rows($result) > 0) {
+                                                                    // output data of each row
+                                                                    while($row = mysqli_fetch_assoc($result)) {
+                                                                        $diet_id = $row['diet_id'];
+                                                                        $title = $row['title'];
+                                                                ?>
+                                                                <option value="<?php echo $title;?>"><?php echo $title; ?></option>
+                                                                <?php
+                                                                    }
+                                                                }
+                                                                ?>
+                                                            </select>
+                                                        </div>
+                                                    </div>
                                                     <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label for="mealCode">Meal Code</label>

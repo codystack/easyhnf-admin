@@ -182,7 +182,7 @@ require_once "./auth/update.php";
                                                     <div class="col-md-12">
                                                         <div class="form-group">
                                                             <label for="instructions">Direction</label>
-                                                            <textarea rows="5" class="form-control" name="instructions" id="instructions" placeholder="Enter directions for this meal"><?php echo $ingredients; ?></textarea>
+                                                            <textarea rows="5" class="form-control" name="instructions" id="instructions" placeholder="Enter directions for this meal"><?php echo $instructions; ?></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12">

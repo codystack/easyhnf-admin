@@ -129,7 +129,7 @@ include "./components/topnavbar.php";
                                             <div class="col-md-4 col-lg-6 text-right">
                                                 <div class="text-end  font-weight-bold">
                                                     <span class="fs-6">LONG DESCRIPTION</span>
-                                                    <h6 class="mt-2"><?php echo $instructions; ?> </h6>
+                                                    <h6 class="mt-2"><?php echo $long_description; ?> </h6>
                                                 </div>
                                             </div>
                                         </div>
