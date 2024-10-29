@@ -91,8 +91,8 @@ require_once "./auth/delete.php";
                                                       <td><?php echo $subscription_plan; ?></td>
                                                       <td><?php echo date('j F Y', $date); ?></td>
                                                       <td class="text-right">
-                                                            <a href="view-subscription?id=<?php echo $subscription_id; ?>" class='btn btn-dark' style="padding: 0.5rem 1rem;">View</a>
-                                                            <button type="button" data-id="<? echo $subscription_id; ?>" onclick="confirmSubscriptionDelete(this);" class='btn btn-danger' style="padding: 0.5rem 1rem;">Delete</button>
+                                                            <a href="view-subscription?id=<?php echo $subscription_id; ?>" class='btn btn-dark' style="padding: 0.5rem 1rem;"><i class="mdi mdi-eye"></i></a>
+                                                            <button type="button" data-id="<? echo $subscription_id; ?>" onclick="confirmSubscriptionDelete(this);" class='btn btn-danger' style="padding: 0.5rem 1rem;"><i class="mdi mdi-delete"></i></button>
                                                         </td>
                                                   </tr>
                                                   <?php

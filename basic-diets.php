@@ -85,8 +85,8 @@ require_once "./auth/delete.php";
                                                         <!-- <td>₦<?php echo number_format($price, 0, '.', ','); ?></td> -->
                                                         <td><?php echo date('j F Y', $date); ?></td>
                                                         <td class="text-right">
-                                                            <a href="edit-basic-diet?id=<?php echo $diet_id; ?>" class='btn btn-dark' style="padding: 0.5rem 1rem;">Edit</a>
-                                                            <button type="button" data-id="<? echo $diet_id; ?>" onclick="confirmBasicDietDelete(this);" class='btn btn-danger' style="padding: 0.5rem 1rem;">Delete</button>
+                                                            <a href="edit-basic-diet?id=<?php echo $diet_id; ?>" class='btn btn-dark' style="padding: 0.5rem 1rem;"><i class="mdi mdi-pencil"></i></a>
+                                                            <button type="button" data-id="<? echo $diet_id; ?>" onclick="confirmBasicDietDelete(this);" class='btn btn-danger' style="padding: 0.5rem 1rem;"><i class="mdi mdi-delete"></i></button>
                                                         </td>
                                                     </tr>
                                                     <?php

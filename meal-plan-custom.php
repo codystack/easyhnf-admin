@@ -99,9 +99,9 @@ require_once "./auth/delete.php";
                                                         <td><?php echo $first_name; ?> <?php echo $last_name; ?></td>
                                                         <td class="text-center"><span class="badge <? echo $class; ?> text-xs <? echo $text; ?>"><?php echo $status; ?></span></td>
                                                         <td class="text-right">
-                                                            <a href="view-custom-meal-plan?id=<?php echo $plan_id; ?>" class='btn btn-dark' style="padding: 0.5rem 1rem;">View</a>
-                                                            <a href="edit-custom-meal-plan?id=<?php echo $plan_id; ?>" class='btn btn-warning' style="padding: 0.5rem 1rem;">Edit</a>
-                                                            <button type="button" data-id="<? echo $plan_id; ?>" onclick="confirmCustomPlanDelete(this);" class='btn btn-danger' style="padding: 0.5rem 1rem;">Delete</button>
+                                                            <a href="view-custom-meal-plan?id=<?php echo $plan_id; ?>" class='btn btn-dark' style="padding: 0.5rem 1rem;"><i class="mdi mdi-eye"></i></a>
+                                                            <a href="edit-custom-meal-plan?id=<?php echo $plan_id; ?>" class='btn btn-warning' style="padding: 0.5rem 1rem;"><i class="mdi mdi-pencil"></i></a>
+                                                            <button type="button" data-id="<? echo $plan_id; ?>" onclick="confirmCustomPlanDelete(this);" class='btn btn-danger' style="padding: 0.5rem 1rem;"><i class="mdi mdi-delete"></i></button>
                                                         </td>
                                                     </tr>
                                                     <?php

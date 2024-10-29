@@ -44,6 +44,12 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="manual-setup">
+                            <i class="mdi mdi-account-network menu-icon"></i>
+                            <span class="menu-title">Manual Setup</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="security">
                             <i class="mdi mdi-fingerprint menu-icon"></i>
                             <span class="menu-title">Security</span>
